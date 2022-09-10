@@ -1,0 +1,1 @@
+export const MESSANGER_DIALOGS_DIALOGS_RECEIVED = 'messanger/dialogs/dialogsReceived';

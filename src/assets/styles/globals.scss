@@ -1,0 +1,11 @@
+@import 'scss-reset/_reset.scss';
+@import './helveticaNeue.font.scss';
+
+html, body {
+  font-family: 'HelveticaNeueCyr', 'sans-serif';
+}
+
+main {
+  width: 70%;
+  margin: 0 auto;
+}
