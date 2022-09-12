@@ -2,9 +2,11 @@ import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 import {dialogsReducer} from './dialogs/dialogs.reducer';
+import {profileReducer} from './profile/profile.reducer';
 
 export const rootReducer = combineReducers({
     dialogs: dialogsReducer,
+    profile: profileReducer,
 });
 
 // @ts-ignore

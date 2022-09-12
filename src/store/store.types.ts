@@ -10,3 +10,18 @@ export type AppStateType = ReturnType<RootReducerType>
 export type InferActionsType<T> = T extends {[key: string]: (...arg: any[]) => infer U} ? U : never
 
 export type BasicThunkActionType<A extends Action> = ThunkAction<Promise<void>, AppStateType, unknown, A>
+
+export type ResponseType<D = {}, RS = ResultCodesEnum> = {
+    data: D
+    resultCode: RS
+    messages: Array<string>
+}
+
+export enum ResultCodesEnum {
+    Success = 0,
+    Error = 1
+}
+
+export enum ResultCodeCaptcha {
+    CaptchaIsRequired = 10
+}

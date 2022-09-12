@@ -1,5 +1,14 @@
 import {ContactsType, PhotosType} from '../../types/types';
 
+import {InferActionsType} from '../store.types';
+
+import {profileInitialState} from './profile.reducer';
+import {profileActions} from './profile.actions';
+
+export type ProfileInitialStateType = typeof profileInitialState
+
+export type ProfaileActionsType = InferActionsType<typeof profileActions>
+
 export type ProfileType = {
     userId?: number | null
     lookingForAJob?: boolean | null

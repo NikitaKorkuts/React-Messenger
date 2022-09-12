@@ -1,11 +1,13 @@
 import React from 'react';
 
+import ProfileContainer from '../../components/screens/Profile/ProfileContainer';
+
 const ProfilePage = () => {
     return (
         <div>
-            Profile Page
+            <ProfileContainer />
         </div>
     );
 };
 
-export default ProfilePage
+export default ProfilePage;
