@@ -1,11 +1,11 @@
 import React, {FC, PropsWithChildren} from 'react';
 
-import {Header} from './Header/Header';
+import HeaderContainer from './Header/HeaderContainer';
 
 export const Layout: FC<PropsWithChildren> = ({children}) => {
     return (
         <>
-            <Header />
+            <HeaderContainer />
             <main>
                 {children}
             </main>

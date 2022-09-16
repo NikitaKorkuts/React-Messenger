@@ -1,6 +1,6 @@
 import {instance} from '../services';
 import {ProfileType} from '../../store/profile/profile.types';
-import {ResponseType} from '../../store/store.types';
+import {ResponseType} from '../services.types';
 
 import {SetUserAvatarDataResponseType} from './profile.types';
 

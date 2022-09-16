@@ -7,7 +7,7 @@ import {profileActions} from './profile.actions';
 
 export type ProfileInitialStateType = typeof profileInitialState
 
-export type ProfaileActionsType = InferActionsType<typeof profileActions>
+export type ProfileActionsType = InferActionsType<typeof profileActions>
 
 export type ProfileType = {
     userId?: number | null

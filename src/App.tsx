@@ -1,5 +1,5 @@
 import React, {FC, Suspense} from 'react';
-import {Provider} from 'react-redux';
+import {connect, Provider} from 'react-redux';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {compose} from 'redux';
 
@@ -8,30 +8,49 @@ import {store} from './store/store';
 import {withRouter} from './hocs/withRouter';
 import {Preloader} from './components/shared/Preloader/Preloader';
 import {ProfilePage, routes} from './constants/routes/routes';
+import {AppStateType} from './store/store.types';
+import {initializeApp} from './store/app/app.actions';
+import {AppPropsType} from './types/app.types';
 
 
-export const App = () => {
-    return (
-        <div className="App">
-            <Layout>
-                <Suspense fallback={<Preloader/>}>
-                    <Routes>
-                        <Route path="/profile" element={<ProfilePage/>}>
-                            <Route path={':id'} element={<ProfilePage/>}/>
-                        </Route>
-                        {routes.map(({path, component}) => {
-                            return <Route key={path} path={path} element={component}/>;
-                        })}
-                    </Routes>
-                </Suspense>
-            </Layout>
-        </div>
-    );
+
+export class App extends React.Component<AppPropsType> {
+    componentDidMount() {
+        const {initializeApp} = this.props;
+        initializeApp();
+    }
+
+    render () {
+        const {initialized} = this.props;
+        if (!initialized) {
+            return <Preloader />;
+        }
+        return (
+            <div className="App">
+                <Layout>
+                    <Suspense fallback={<Preloader/>}>
+                        <Routes>
+                            <Route path="/profile" element={<ProfilePage/>}>
+                                <Route path={':id'} element={<ProfilePage/>}/>
+                            </Route>
+                            {routes.map(({path, component}) => {
+                                return <Route key={path} path={path} element={component}/>;
+                            })}
+                        </Routes>
+                    </Suspense>
+                </Layout>
+            </div>
+        );
+    }
 };
+
+const mapStateToProps = (state: AppStateType) => ({
+    initialized: state.app.initialized,
+});
 
 const AppContainer = compose<React.ComponentType>(
     withRouter,
-)(App);
+    connect(mapStateToProps, {initializeApp}))(App);
 
 export const MessangerApp: FC = () => {
     return (

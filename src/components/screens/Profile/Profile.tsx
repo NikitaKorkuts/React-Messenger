@@ -14,6 +14,7 @@ export class Profile extends Component<ProfilePropsType> {
 
     render() {
         const {
+            isOwner,
             profile,
             status,
             profileUpdatingStatus,
@@ -21,11 +22,14 @@ export class Profile extends Component<ProfilePropsType> {
             setProfileUpdatingStatus,
         } = this.props;
 
+
+
         if (!profile) {
             return <Preloader/>;
         }
         return (
             <div>
+                {isOwner && <p>Owner</p>}
                 <ProfileEditDataForms />
                 <ProfileJobSearchStatus areLookingForJob={profile.lookingForAJob}/>
                 <ProfileInfo
@@ -35,8 +39,6 @@ export class Profile extends Component<ProfilePropsType> {
                 <ProfileAboutMe aboutMe={profile.aboutMe}/>
                 <ProfileProfessionalSkills lookingForAJobDescription={profile.lookingForAJobDescription}/>
                 <ProfileContacts contacts={profile.contacts}/>
-
-
             </div>
         );
     }

@@ -2,6 +2,8 @@ import {ProfileType} from '../../../store/profile/profile.types';
 import {ContactsType, Nullable} from '../../../types/types';
 
 export type ProfileContainerPropsType = {
+    authUserId: number,
+    isAuth: boolean,
     profile: ProfileType | null
     status: string
     profileUpdatingStatus: string
@@ -12,6 +14,7 @@ export type ProfileContainerPropsType = {
 }
 
 export type ProfilePropsType = {
+    isOwner: boolean
     profile: ProfileType | null
     status: string
     profileUpdatingStatus: string
