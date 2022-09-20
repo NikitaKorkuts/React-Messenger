@@ -1,7 +1,7 @@
 export type TextareaPropsType = {
     type?: string
     name: string
-    hasError?: boolean
+    hasError?: false | string
     error?: string
     props?: object
 }

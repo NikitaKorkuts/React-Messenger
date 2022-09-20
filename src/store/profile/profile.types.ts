@@ -18,3 +18,4 @@ export type ProfileType = {
     photos?: PhotosType,
     aboutMe?: string | null
 }
+

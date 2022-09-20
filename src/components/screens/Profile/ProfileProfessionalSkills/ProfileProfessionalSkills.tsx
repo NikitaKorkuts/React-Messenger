@@ -6,7 +6,7 @@ export const ProfileProfessionalSkills: FC<ProfileProfessionalSkillsPropsType> =
     if (lookingForAJobDescription) {
         return (
             <div>
-                <h1>My Professional skills:</h1>
+                <h1>My Professional skills</h1>
                 <p>{lookingForAJobDescription}</p>
             </div>
         );

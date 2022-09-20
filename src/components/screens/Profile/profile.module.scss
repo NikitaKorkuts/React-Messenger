@@ -58,6 +58,17 @@ h1 {
 .user {
   display: flex;
 
+
+  .userAvatar .avatarImg {
+    width: 220px;
+    height: 220px;
+  }
+
+  .userAvatar {
+    position: relative;
+    margin-top: 30px;
+  }
+
   .ownerAvatar {
     position: relative;
     margin-top: 30px;
@@ -80,7 +91,7 @@ h1 {
       left:0;
     }
 
-    .avatrImg {
+    .avatarImg {
       opacity: 1;
       display: block;
       width: 220px;

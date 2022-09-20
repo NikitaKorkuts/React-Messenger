@@ -14,7 +14,7 @@ export type LoginFormType = {
 
 export type SubmitPropsType = {
     setSubmitting: (isSubmitting: boolean) => void
-    setStatus: (statusObj: {error: string}) => void
+    setStatus: (statusObj: StatusObjType) => void
 }
 
 export type LoginFormDataType = {

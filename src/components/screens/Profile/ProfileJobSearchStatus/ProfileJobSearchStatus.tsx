@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 import {ProfileJobSearchStatusType} from '../profile.types';
-import s from '../proifle.module.scss';
+import s from '../profile.module.scss';
 
 export const ProfileJobSearchStatus: FC<ProfileJobSearchStatusType> = ({areLookingForJob}) => {
     if (areLookingForJob) {

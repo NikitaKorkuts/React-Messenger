@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import s from '../proifle.module.scss';
+import s from '../profile.module.scss';
 import {ProfileContactsPropsType} from '../profile.types';
 
 export const ProfileContacts: FC<ProfileContactsPropsType> = ({contacts}) => {

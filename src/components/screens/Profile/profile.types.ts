@@ -11,6 +11,8 @@ export type ProfileContainerPropsType = {
     getUserStatus: (id: number) => Promise<void>
     updateUserStatus: (status: string) => Promise<void>
     setProfileUpdatingStatus: (status: string) => void
+    updateUserAvatar: (image: File) => Promise<void>
+    updateProfile: (profile: ProfileType) => Promise<void>
 }
 
 export type ProfilePropsType = {
@@ -20,6 +22,12 @@ export type ProfilePropsType = {
     profileUpdatingStatus: string
     updateUserStatus: (status: string) => Promise<void>
     setProfileUpdatingStatus: (status: string) => void
+    updateUserAvatar: (image: File) => Promise<void>
+    updateProfile: (
+        profile: ProfileType,
+        setStatus: (status: object) => void,
+        setErrors: (errors: object) => void
+    ) => Promise<void>
 }
 
 export type ProfileJobSearchStatusType = {
@@ -42,14 +50,23 @@ export type ProfileInfoPropsType = {
     status: string
     profile: ProfileType
     updateStatus: (status: string) => Promise<void>
+    updateAvatar: (image: File) => Promise<void>
+    isOwner: boolean
 }
 
 export type ProfileStatusPropsType = {
     status: string
     updateStatus: (status: string) => void
+    isOwner: boolean
 }
 
 export type ProfileStatusStateType = {
     editMode: boolean
     status: string
 }
+
+export type ProfileEditDataFormsPropsType = {
+    profile: ProfileType
+    submit: (values: ProfileType, setStatus: (status: object) => void, setErrors: (errors: object) => void) => void
+}
+

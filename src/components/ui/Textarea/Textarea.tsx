@@ -11,6 +11,14 @@ export const Textarea: FC<TextareaPropsType> = ({
     props = {},
 }) => {
     return (
-        <Field error={error} hasError={hasError}><textarea name={name} {...props}/></Field>
+        <Field
+            error={error}
+            hasError={hasError}
+        >
+            <textarea
+                name={name}
+                {...props}
+            />
+        </Field>
     );
 };

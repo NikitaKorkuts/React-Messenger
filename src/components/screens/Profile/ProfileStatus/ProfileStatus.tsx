@@ -1,14 +1,14 @@
 import React, {ChangeEvent} from 'react';
 
 import {ProfileStatusPropsType, ProfileStatusStateType} from '../profile.types';
-import s from '../proifle.module.scss';
+import s from '../profile.module.scss';
 
 export class ProfileStatus extends React.Component<ProfileStatusPropsType, ProfileStatusStateType> {
     state = {
         editMode: false,
         status: this.props.status,
     };
-    ativateEditMode = () => {
+    activateEditMode = () => {
         this.setState({
             editMode: true,
         });
@@ -35,20 +35,41 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType, Profi
     }
 
     render() {
-        const {status} = this.props;
+        const {status, isOwner} = this.props;
+
+        if (isOwner) {
+            return (
+                <>
+                    {!this.state.editMode && (
+                        <div>
+                            <p
+                                className={s.aboutMeText}
+                                onClick={this.activateEditMode}
+                            >
+                                {status || 'no status'}
+                            </p>
+                        </div>
+                    )}
+                    {this.state.editMode && (
+                        <div>
+                            <input
+                                type="text"
+                                onChange={this.onStatusChange}
+                                autoFocus={true}
+                                onBlur={this.deactivateEditMode}
+                                value={this.state.status}
+                            />
+                        </div>
+                    )}
+                </>
+            );
+        }
         return (
-            <>
-                {!this.state.editMode &&
-                    <div><p className={s.aboutMeText}
-                        onClick={this.ativateEditMode}>{status || 'no status'}</p></div>
-                }
-                {this.state.editMode &&
-                    <div>
-                        <input type="text" onChange={this.onStatusChange} autoFocus={true}
-                            onBlur={this.deactivateEditMode} value={this.state.status}/>
-                    </div>
-                }
-            </>
-        )
+            <div>
+                <p className={s.aboutMeText}>
+                    {status || 'no status'}
+                </p>
+            </div>
+        );
     }
 }

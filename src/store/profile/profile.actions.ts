@@ -1,7 +1,10 @@
 import {PhotosType} from '../../types/types';
 import {profileServices} from '../../services/profile/profile.services';
-
+import {authActions, getAuthUserData} from '../auth/auth.actions';
 import {BasicThunkActionType} from '../store.types';
+import {SetAuthUserAvatarActionType} from '../auth/auth.types';
+import {ResultCodesEnum} from '../../services/services.types';
+import {formErrorsObj} from '../../utils/formErrorsObj';
 
 import {ProfileType, ProfileActionsType} from './profile.types';
 import {
@@ -51,3 +54,38 @@ export const updateUserStatus = (status: string): BasicThunkActionType<ProfileAc
         }
     };
 };
+
+export const updateUserAvatar = (image: File):
+    BasicThunkActionType<ProfileActionsType | SetAuthUserAvatarActionType> => {
+    return async (dispatch) => {
+        const response = await profileServices.setUserAvatar(image);
+        if (response.resultCode === 0) {
+            dispatch(profileActions.setUserAvatar(response.data.photos));
+            dispatch(authActions.setAuthUserAvatar(response.data.photos));
+        }
+    };
+};
+
+export const updateProfile = (
+    profile: ProfileType,
+    setStatus: (status: object) => void,
+    setErrors: (errors: object) => void,
+): BasicThunkActionType<ProfileActionsType> => {
+    return async (dispatch, getState) => {
+        const userId = getState().auth.userId;
+        const response = await profileServices.setUserProfile(profile);
+        if (response.resultCode === ResultCodesEnum.Success) {
+            dispatch(profileActions.setProfileUpdatingStatus('success'));
+            dispatch(getUserProfile(userId));
+            dispatch(getAuthUserData());
+        } else if (response.resultCode === ResultCodesEnum.Error) {
+            const errors = formErrorsObj(response.messages);
+            if(errors._error) {
+                setStatus({error: errors._error});
+            }
+            setErrors(errors);
+            dispatch(profileActions.setProfileUpdatingStatus('error'));
+            return Promise.reject(response.messages[0]);
+        }
+    }
+}

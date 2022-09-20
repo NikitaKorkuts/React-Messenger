@@ -3,7 +3,13 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {Navigate} from 'react-router-dom';
 
-import {getUserProfile, getUserStatus, profileActions, updateUserStatus} from '../../../store/profile/profile.actions';
+import {
+    getUserProfile,
+    getUserStatus,
+    profileActions, updateProfile,
+    updateUserAvatar,
+    updateUserStatus,
+} from '../../../store/profile/profile.actions';
 import {withRouter} from '../../../hocs/withRouter';
 import {AppStateType} from '../../../store/store.types';
 import {RouterType} from '../../../types/types';
@@ -25,7 +31,6 @@ class ProfileContainer extends React.Component<RouterType & ProfileContainerProp
 
     componentDidMount() {
         this.__refreshUserProfile();
-
     }
 
     componentDidUpdate(prevProps: RouterType & ProfileContainerPropsType) {
@@ -44,10 +49,12 @@ class ProfileContainer extends React.Component<RouterType & ProfileContainerProp
             profileUpdatingStatus,
             updateUserStatus,
             setProfileUpdatingStatus,
+            updateProfile,
+            updateUserAvatar,
         } = this.props;
 
         if (!isAuth && !router.params.id) {
-            return <Navigate to={'/login'}/>
+            return <Navigate to={'/login'}/>;
         }
         const isOwner = Number(router.params.id) === authUserId || !router.params.id;
         return (
@@ -57,6 +64,8 @@ class ProfileContainer extends React.Component<RouterType & ProfileContainerProp
                 status={status}
                 profileUpdatingStatus={profileUpdatingStatus}
                 updateUserStatus={updateUserStatus}
+                updateProfile={updateProfile}
+                updateUserAvatar={updateUserAvatar}
                 setProfileUpdatingStatus={setProfileUpdatingStatus}/>
         );
     }
@@ -74,5 +83,7 @@ export default compose<React.ComponentType>(withRouter, connect(mapStateToProps,
     getUserProfile,
     getUserStatus,
     updateUserStatus,
+    updateUserAvatar,
+    updateProfile,
     setProfileUpdatingStatus: profileActions.setProfileUpdatingStatus,
 }))(ProfileContainer)
