@@ -1,0 +1,51 @@
+$color_1: black;
+
+.user {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+
+  .userInfo {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .infoFriend {
+      margin-top: 30px;
+
+      button {
+        padding: 3px 20px;
+      }
+      span {
+        margin-right: 20px;
+      }
+    }
+
+    .infoName {
+      a {
+        font-size: 25px;
+        color: $color_1;
+        text-decoration: none;
+      }
+    }
+
+    .infoInfo {
+      margin-top: -10px;
+    }
+  }
+
+  .userAvatar {
+    img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+
+
+
+
+
