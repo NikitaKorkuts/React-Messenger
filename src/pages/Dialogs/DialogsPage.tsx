@@ -10,4 +10,4 @@ const DialogsPage = () => {
     );
 };
 
-export default DialogsPage
+export default DialogsPage;

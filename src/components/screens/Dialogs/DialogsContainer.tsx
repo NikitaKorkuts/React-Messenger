@@ -2,23 +2,46 @@ import {connect} from 'react-redux';
 import {Component} from 'react';
 
 import {AppStateType} from '../../../store/store.types';
-import {getDialogs} from '../../../store/dialogs/dialogs.actions';
+import {getDialogs, getNewMessagesCount} from '../../../store/dialogs/dialogs.actions';
 
 import {Dialogs} from './Dialogs';
 import {DialogsContainerPropsType} from './dialogs.types';
 
 class DialogsContainer extends Component<DialogsContainerPropsType> {
+    newMessagesCountRequestTimer: ReturnType<typeof setTimeout> = setTimeout(() => {
+    });
     componentDidMount() {
-        const {getDialogs} = this.props;
+        const {getDialogs, getNewMessagesCount} = this.props;
 
         getDialogs();
+
+        this.newMessagesCountRequestTimer = setInterval(
+            () => {
+                getNewMessagesCount();
+            }, 2000,
+        );
+
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.newMessagesCountRequestTimer);
+    }
+
+    componentDidUpdate(prevProps: DialogsContainerPropsType) {
+        const {getDialogs, newMessagesCount} = this.props;
+
+        if (prevProps.newMessagesCount !== newMessagesCount) {
+            getDialogs();
+        }
     }
 
     render() {
         const {dialogs} = this.props;
 
         return (
-            <Dialogs dialogs={dialogs}/>
+            <Dialogs
+                dialogs={dialogs}
+            />
         );
     }
 }
@@ -26,7 +49,8 @@ class DialogsContainer extends Component<DialogsContainerPropsType> {
 const mapStateToProps = (state: AppStateType) => {
     return {
         dialogs: state.dialogs.dialogs,
+        newMessagesCount: state.dialogs.newMessagesCount,
     };
 };
 
-export default connect(mapStateToProps, {getDialogs})(DialogsContainer);
+export default connect(mapStateToProps, {getDialogs, getNewMessagesCount})(DialogsContainer);

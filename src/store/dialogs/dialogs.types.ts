@@ -21,3 +21,14 @@ export type DialogType = {
     }
 }
 
+export type MessageType = {
+    id: string
+    body: string
+    translatedBody?: any
+    addedAt: Date
+    senderId: number
+    senderName: string
+    recipientId: number
+    viewed: boolean
+}
+

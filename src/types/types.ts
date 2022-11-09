@@ -40,4 +40,3 @@ export type UsersType = {
     status: string | null,
     followed: boolean
 }
-

@@ -7,7 +7,7 @@ import {Layout} from './components/layout/Layout';
 import {store} from './store/store';
 import {withRouter} from './hocs/withRouter';
 import {Preloader} from './components/shared/Preloader/Preloader';
-import {ProfilePage, routes} from './constants/routes/routes';
+import {DialogPage, ProfilePage, routes} from './constants/routes/routes';
 import {AppStateType} from './store/store.types';
 import {initializeApp} from './store/app/app.actions';
 import {AppPropsType} from './types/app.types';
@@ -32,6 +32,9 @@ export class App extends React.Component<AppPropsType> {
                         <Routes>
                             <Route path="/profile" element={<ProfilePage/>}>
                                 <Route path={':id'} element={<ProfilePage/>}/>
+                            </Route>
+                            <Route path="/dialog" element={<DialogPage/>}>
+                                <Route path={':id'} element={<DialogPage/>}/>
                             </Route>
                             {routes.map(({path, component}) => {
                                 return <Route key={path} path={path} element={component}/>;

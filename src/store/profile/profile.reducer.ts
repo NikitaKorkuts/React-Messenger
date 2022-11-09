@@ -12,7 +12,6 @@ export const profileInitialState = {
 };
 
 export const profileReducer = (state = profileInitialState, action: ProfileActionsType): ProfileInitialStateType => {
-
     switch (action.type) {
     case SET_USER_PROFILE:
         return {...state, profile: action.profile};

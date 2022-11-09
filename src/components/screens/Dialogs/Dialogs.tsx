@@ -8,7 +8,10 @@ export const Dialogs: FC<DialogsPropsType> = ({dialogs}) => {
     return (
         <div className={s.dialogs}>
             {dialogs.map((dialog) => {
-                return <DialogItem key={dialog.id} dialog={dialog} />
+                return <DialogItem
+                    key={dialog.id}
+                    dialog={dialog}
+                />;
             })}
         </div>
     );

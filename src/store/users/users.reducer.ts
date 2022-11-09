@@ -14,10 +14,10 @@ import {
 export const usersInitialState = {
     users: [] as Array<UsersType>,
     friends: [] as Array<UsersType>,
-    pageSize: 10 as number,
-    totalUsersCount: 0 as number,
-    currentPage: 1 as number,
-    isFetching: false as boolean,
+    pageSize: 10,
+    totalUsersCount: 0,
+    currentPage: 1,
+    isFetching: false,
     isFollowingInProgress: [] as Array<number>, // array of users ids that is fetching right now
     filter: {
         term: '',

@@ -11,5 +11,7 @@ export type DialogItemPropsType = {
 
 export type DialogsContainerPropsType = {
     dialogs: DialogType[]
+    newMessagesCount: number
     getDialogs: () => Promise<void>
+    getNewMessagesCount: () => void
 }

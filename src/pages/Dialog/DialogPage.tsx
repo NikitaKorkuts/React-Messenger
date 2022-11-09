@@ -1,12 +1,14 @@
 import React from 'react';
 
+import DialogContainer from '../../components/screens/Dialog/DialogContainer';
+
 const DialogPage = () => {
     return (
         <div>
-            Dialog Page
+            <DialogContainer />
         </div>
     );
 };
 
-export default DialogPage
+export default DialogPage;
 

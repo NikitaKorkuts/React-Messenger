@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import {Link} from 'react-router-dom';
 
 import defaultAvatar from '../../../assets/images/defaultAvatar.png';
 
@@ -19,7 +20,7 @@ export const DialogItem: FC<DialogItemPropsType> = ({dialog}) => {
     };
 
     return (
-        <div className={s.dialog}>
+        <Link to={'/dialog/' + dialog.id} className={s.dialog}>
             <div >
                 {getUserAvatar()}
             </div>
@@ -28,6 +29,6 @@ export const DialogItem: FC<DialogItemPropsType> = ({dialog}) => {
                 <p className={s.lastUserActivityDate}>{dialog.lastUserActivityDate}</p>
             </div>
             {getNewMsgCount()}
-        </div>
+        </Link>
     );
 };
