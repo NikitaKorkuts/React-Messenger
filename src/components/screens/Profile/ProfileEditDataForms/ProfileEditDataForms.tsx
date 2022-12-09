@@ -182,7 +182,6 @@ export const ProfileEditDataForms: FC<ProfileEditDataFormsPropsType> = ({profile
                                             );
                                         }
                                     })}
-
                                     {status?.error && (
                                         <div className={s.formRow}>
                                             <label>
@@ -194,13 +193,10 @@ export const ProfileEditDataForms: FC<ProfileEditDataFormsPropsType> = ({profile
                                     <div className={s.formRow}>
                                         <button type="submit">Сохранить Изменения</button>
                                     </div>
-
                                 </div>
-
                             </form>
                         </div>
-
-                    )
+                    );
                 }
                 }
             </Formik>

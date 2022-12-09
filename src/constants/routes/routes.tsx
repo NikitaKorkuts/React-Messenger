@@ -10,25 +10,31 @@ export const routes = [
     {
         path: '/dialogs',
         component: <DialogsPage/>,
+        child: null,
+        childPath: null,
     },
-    // {
-    //     path: '/dialog',
-    //     component: <DialogPage/>,
-    // },
-    // {
-    //     path: "/error",
-    //     component: ErrorPage,
-    // },
+    {
+        path: '/dialog',
+        component: <DialogPage/>,
+        child: <DialogPage/>,
+        childPath: ':id',
+    },
     {
         path: '/login',
         component: <LoginPage/>,
+        child: null,
+        childPath: null,
     },
-    // {
-    //     path: '/profile',
-    //     component: <ProfilePage/>,
-    // },
+    {
+        path: '/profile',
+        component: <ProfilePage/>,
+        child: <ProfilePage/>,
+        childPath: ':id',
+    },
     {
         path: '/users',
         component: <UsersPage/>,
+        child: null,
+        childPath: null,
     },
 ];
