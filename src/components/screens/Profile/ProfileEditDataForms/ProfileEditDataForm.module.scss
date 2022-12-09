@@ -28,6 +28,7 @@
   .formTitleRow {
     text-align: center;
     margin-top: 50px;
+    margin-left: 120px;
     margin-bottom: 50px;
   }
 
@@ -104,7 +105,7 @@
     box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
     padding: 15px 35px;
     border: 0;
-    margin: 55px auto 0;
+    margin: 55px auto 0 230px;
     cursor: pointer;
   }
 
@@ -126,25 +127,43 @@
 
 .formErrorText {
   color: red;
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: -40px;
+  margin: 30px auto -40px auto;
   font-size: 16px;
   font-weight: 600;
 }
 
-/*	Making the form responsive. Remove these media queries
-    if you don't need the form to work on mobile devices. */
+/*	Making the form responsive.  */
 
 @media (max-width: 900px) {
+
   .formLogin {
     margin: 20px auto;
+    width: 100%;
   }
 
   .formLogInWithEmail {
     position: relative;
     display: block;
     margin: 0 0 50px;
+
+    .formTitleRow {
+      text-align: center;
+      margin: 80px 0 40px 0;
+    }
+
+    .formRow {
+      width: 95%;
+      height: 50px;
+      margin: 0 10px 28px 10px;
+
+      .formCheckbox {
+        margin-top: 13px;
+      }
+
+      button {
+        margin: 0 auto;
+      }
+    }
 
     .formWhiteBackground {
       margin: 0 auto 32px;
@@ -155,21 +174,17 @@
       left: 50%;
       margin-left: -25px;
     }
+
   }
 }
 
 @media (max-width: 600px) {
+
   .formLogInWithEmail {
     .formWhiteBackground {
       width: 300px;
       padding-left: 35px;
       padding-right: 35px;
-    }
-
-    .formRow > label p {
-      display: block;
-      text-align: left;
-      padding: 0 0 10px;
     }
 
     .formEmail, .formPassword {
@@ -192,14 +207,6 @@
 
     span {
       width: 200px !important;
-    }
-  }
-
-  .formLogInWithEmail {
-    .formForgottenPassword, .formCreateAnAccount {
-      display: block;
-      margin: 5px auto;
-      max-width: 180px;
     }
   }
 }

@@ -12,6 +12,7 @@ export const UserItem: FC<UserItemPropsType> = ({
     follow,
     id,
     unfollow,
+    status,
 }) => {
     const onAddToFriends = () => {
         follow(id);
@@ -19,50 +20,76 @@ export const UserItem: FC<UserItemPropsType> = ({
     const onRemoveFromFriends = () => {
         unfollow(id);
     };
-    const getIsFriend = (isFriend: boolean) => {
+    const getFollowButton = () => {
         if (isFriend) {
             return (
-                <div className={s.infoFriend}>
-                    <span>&#10003; Your friend</span>
+                <div className={s.follow}>
                     <button
                         disabled={isFollowingInProgress.some(userId => userId === id)}
                         onClick={onRemoveFromFriends}
+                        className={s.followBtn}
                     >
-                        Remove From Friends
+                        Отписаться
                     </button>
                 </div>
             );
         } else {
             return (
-                <div className={s.infoFriend}>
+                <div className={s.follow}>
                     <button
                         disabled={isFollowingInProgress.some(id => id === id)}
                         onClick={onAddToFriends}
+                        className={s.followBtn}
                     >
-                        Add To Friends
+                        Подписаться
                     </button>
                 </div>
             );
         }
     };
 
+    const getIsFollowing = () => {
+        if(isFriend) {
+            return <span className={s.yourFriend} >&#10003; Вы подписаны</span>
+        }
+    };
+
     return (
         <div className={s.user}>
-            <div className={s.userAvatar}>
-                <Link to={`/profile/${id}`}>
-                    <img alt="UserAvatar" src={imgUrl}/>
-                </Link>
+            <div className={s.mainPart}>
+                <div className={s.leftSide}>
+                    <div className={s.userAvatar}>
+                        <Link to={`/profile/${id}`}>
+                            <img className={s.avatarImg} alt="UserAvatar" src={imgUrl}/>
+                        </Link>
+                    </div>
+                    <div className={s.userInfo}>
+                        <div className={s.infoName}>
+                            <Link className={s.profileLink} to={`/profile/${id}`}>
+                                <p>{name}</p>
+                            </Link>
+                        </div>
+                        <div className={s.infoStatus}>
+                            <p className={s.status}>
+                                {status?.slice(0, 20)}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className={s.isFollowing}>
+                    {getIsFollowing()}
+                </div>
             </div>
-            <div className={s.userInfo}>
-                <div className={s.infoName}>
-                    <Link to={`/profile/${id}`}>
-                        <p>{name}</p>
+
+            <div className={s.actions}>
+                {getFollowButton()}
+                <div className={s.startChatting}>
+                    <Link to={`/dialog/${id}`}>
+                        <button className={s.startChattingBtn}>
+                            Написать сообщение
+                        </button>
                     </Link>
                 </div>
-                <div className={s.infoInfo}>
-
-                </div>
-                {getIsFriend(isFriend)}
             </div>
         </div>
     )

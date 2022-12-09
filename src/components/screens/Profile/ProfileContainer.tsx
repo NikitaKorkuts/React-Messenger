@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Navigate} from 'react-router-dom';
 
 import {
+    getIsFriend,
     getUserProfile,
     getUserStatus,
     profileActions, updateProfile,
@@ -13,6 +14,7 @@ import {
 import {withRouter} from '../../../hocs/withRouter';
 import {AppStateType} from '../../../store/store.types';
 import {RouterType} from '../../../types/types';
+import {follow, unfollow} from '../../../store/users/users.actions';
 
 import {Profile} from './Profile';
 import {ProfileContainerPropsType} from './profile.types';
@@ -20,12 +22,13 @@ import {ProfileContainerPropsType} from './profile.types';
 
 class ProfileContainer extends React.Component<RouterType & ProfileContainerPropsType> {
     __refreshUserProfile() {
-        const {getUserProfile, getUserStatus, router, authUserId} = this.props;
+        const {getUserProfile, getUserStatus, router, authUserId, getIsFriend} = this.props;
 
         const userId = router.params.id || authUserId;
         if (userId) {
             getUserProfile(userId);
             getUserStatus(userId);
+            getIsFriend(userId);
         }
     }
 
@@ -51,6 +54,10 @@ class ProfileContainer extends React.Component<RouterType & ProfileContainerProp
             setProfileUpdatingStatus,
             updateProfile,
             updateUserAvatar,
+            isFriend,
+            follow,
+            unfollow,
+            setIsFriend,
         } = this.props;
 
         if (!isAuth && !router.params.id) {
@@ -66,7 +73,12 @@ class ProfileContainer extends React.Component<RouterType & ProfileContainerProp
                 updateUserStatus={updateUserStatus}
                 updateProfile={updateProfile}
                 updateUserAvatar={updateUserAvatar}
-                setProfileUpdatingStatus={setProfileUpdatingStatus}/>
+                setProfileUpdatingStatus={setProfileUpdatingStatus}
+                isFriend={isFriend}
+                follow={follow}
+                unfollow={unfollow}
+                setIsFriend={setIsFriend}
+            />
         );
     }
 }
@@ -77,6 +89,7 @@ const mapStateToProps = (state: AppStateType) => ({
     profile: state.profile.profile,
     status: state.profile.status,
     profileUpdatingStatus: state.profile.profileUpdatingStatus,
+    isFriend: state.profile.isFriend,
 });
 
 export default compose<React.ComponentType>(withRouter, connect(mapStateToProps, {
@@ -86,4 +99,8 @@ export default compose<React.ComponentType>(withRouter, connect(mapStateToProps,
     updateUserAvatar,
     updateProfile,
     setProfileUpdatingStatus: profileActions.setProfileUpdatingStatus,
+    getIsFriend,
+    follow,
+    unfollow,
+    setIsFriend: profileActions.setIsFriend,
 }))(ProfileContainer)

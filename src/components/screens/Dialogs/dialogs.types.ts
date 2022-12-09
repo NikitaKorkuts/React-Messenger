@@ -1,12 +1,14 @@
 import {DialogType} from '../../../store/dialogs/dialogs.types';
+import {Nullable} from '../../../types/types';
 
 export type DialogsPropsType = {
     dialogs: DialogType[]
+    authUserId: Nullable<number>
 }
 
 export type DialogItemPropsType = {
     dialog: DialogType
-    key: number
+    authUserId: Nullable<number>
 }
 
 export type DialogsContainerPropsType = {
@@ -14,4 +16,5 @@ export type DialogsContainerPropsType = {
     newMessagesCount: number
     getDialogs: () => Promise<void>
     getNewMessagesCount: () => void
+    authUserId: Nullable<number>
 }

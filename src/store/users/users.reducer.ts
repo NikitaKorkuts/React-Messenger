@@ -5,7 +5,7 @@ import {UsersActionsType, UsersInitialStateType} from './users.types';
 import {
     ADD_TO_FRIENDS,
     REMOVE_FROM_FRIENDS,
-    SET_CURRENT_PAGE, SET_FILTER, SET_FRIENDS,
+    SET_CURRENT_PAGE, SET_FILTER,
     SET_TOTAL_USERS_COUNT,
     SET_USERS,
     TOGGLE_IS_FETCHING, TOGGLE_IS_FOLLOWING_IN_PROGRESS,
@@ -13,7 +13,6 @@ import {
 
 export const usersInitialState = {
     users: [] as Array<UsersType>,
-    friends: [] as Array<UsersType>,
     pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
@@ -36,9 +35,6 @@ export const usersReducer = (state = usersInitialState, action: UsersActionsType
         return {
             ...state,
             users: updateObjectInArray(state.users, action.id, 'id', {followed: false}),
-            friends: state.friends.filter((el) => {
-                return action.id !== el.id
-            }),
         }
     case SET_USERS:
         return {
@@ -71,11 +67,6 @@ export const usersReducer = (state = usersInitialState, action: UsersActionsType
         return {
             ...state,
             filter: action.filter,
-        }
-    case SET_FRIENDS:
-        return {
-            ...state,
-            friends: action.friends,
         }
     default:
         return state;

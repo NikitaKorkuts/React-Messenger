@@ -9,9 +9,4 @@ export const usersServices = {
             .get<GetUsersResponseType>(`users?page=${page}&count=${pageSize}&term=${term}` + friendParam)
             .then(response => response.data);
     },
-    getFriends() {
-        return instance
-            .get<GetUsersResponseType>('users?friend=true')
-            .then(res => res.data);
-    },
 }

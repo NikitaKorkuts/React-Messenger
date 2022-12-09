@@ -1,24 +1,72 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #191919;
   min-height: 20px;
-  width: 70%;
+  min-width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   z-index: 1000;
-  padding: 10px 0;
+  padding: 5px 0;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 70%;
+    min-width: 430px;
+    margin: 0 auto;
+  }
 
   .search {
+    display: flex;
+    align-items: center;
+
+    .active *{
+      fill: orange;
+    }
 
     .searchIcon {
+      margin-left: 20px;
       cursor: pointer;
-      width: 30px;
+      width: 27px;
     }
+
+    .chatIcon {
+      cursor: pointer;
+      width: 27px;
+      margin-left: 27px;
+    }
+
+    a {
+      position: relative;
+
+      .newMessagesCountCircle {
+        width: 15px;
+        height: 15px;
+        font-size: 12px;
+        font-weight: 500;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        color: white;
+        background: red;
+        position: absolute;
+        text-align: center;
+        bottom: 0;
+        right: -3px;
+      }
+    }
+
+
   }
 
   .login{
-    color: black;
+    color: white;
+    font-weight: 300;
+    padding: 5px 0;
     text-decoration: none;
     font-size: 25px;
     cursor: pointer;
@@ -28,20 +76,69 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    
+    .dropdownMenuHeader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 140px;
+      cursor: pointer;
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none;   /* Chrome/Safari/Opera */
+      -khtml-user-select: none;    /* Konqueror */
+      -moz-user-select: none;      /* Firefox */
+      -ms-user-select: none;       /* Internet Explorer/Edge */
+      user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+    }
+
+    .dropdownMenuItems {
+      padding: 13px 0 3px 0;
+      background: #191919;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+
+      a{
+        color: white;
+        font-size: 14px;
+        text-decoration: none;
+        cursor: pointer;
+
+        .dropdownMenuItem {
+          width: 120px;
+          margin: 0 10px;
+          padding: 6px 0;
+        }
+
+        &.active{
+          color: orange;
+          font-weight: 500;
+        }
+
+      }
+    }
+
 
     .link{
-      font-size: 25px;
-      color: black;
+      font-size: 17px;
+      color: white;
       margin: 0;
     }
 
+    .triangleIcon {
+      width: 9px;
+      height: 9px;
+      margin-left: 6px;
+    }
+
     .avatar {
-      width: 50px;
-      height: 50px;
-      margin-left: 20px;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      -webkit-border-radius: 16%;
+      -moz-border-radius: 16%;
+      border-radius: 20%;
+      margin: 0 20px;
       cursor: pointer
     }
   }

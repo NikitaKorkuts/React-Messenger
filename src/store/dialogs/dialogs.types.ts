@@ -12,8 +12,9 @@ export type DialogType = {
     id: number
     userName: string
     hasNewMessages: boolean
-    lastDialogActivityDate: string
-    lastUserActivityDate: string
+    lastDialogActivityDate: Date
+    lastMessage: MessageType
+    lastUserActivityDate: Date
     newMessagesCount: number
     photos: {
         large: string | null
@@ -30,5 +31,10 @@ export type MessageType = {
     senderName: string
     recipientId: number
     viewed: boolean
+}
+
+export enum MessageTypesEnum {
+    'updatingMessage',
+    'notUpdatingMessage',
 }
 

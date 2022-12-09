@@ -6,8 +6,11 @@ import {SetAuthUserAvatarActionType} from '../auth/auth.types';
 import {ResultCodesEnum} from '../../services/services.types';
 import {formErrorsObj} from '../../utils/formErrorsObj';
 
+import {followServices} from '../../services/follow/follow.services';
+
 import {ProfileType, ProfileActionsType} from './profile.types';
 import {
+    SET_IS_FRIEND,
     SET_PROFILE_UPDATING_STATUS,
     SET_USER_AVATAR, SET_USER_PROFILE,
     SET_USER_STATUS,
@@ -29,6 +32,10 @@ export const profileActions = {
     setUserProfile: (profile: ProfileType) => ({
         type: SET_USER_PROFILE,
         profile: profile,
+    } as const),
+    setIsFriend: (isFriend: boolean | null) => ({
+        type: SET_IS_FRIEND,
+        isFriend,
     } as const),
 };
 
@@ -87,5 +94,16 @@ export const updateProfile = (
             dispatch(profileActions.setProfileUpdatingStatus('error'));
             return Promise.reject(response.messages[0]);
         }
-    }
-}
+    };
+};
+
+export const getIsFriend = (id: number | null): BasicThunkActionType<ProfileActionsType> => {
+    return async (dispatch) => {
+        if(id) {
+            const response = await followServices.getIsFriend(id);
+            dispatch(profileActions.setIsFriend(response));
+        } else {
+            dispatch(profileActions.setIsFriend(null));
+        }
+    };
+};

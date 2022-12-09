@@ -19,18 +19,22 @@ export const ProfileInfo: FC<ProfileInfoPropsType> = ({profile, updateAvatar, up
         <div className={s.user}>
             {isOwner &&
                 (
-                    <div className={s.ownerAvatar}>
+                    <div className={`${s.ownerAvatar} ${s.avatar}`}>
                         <img className={s.avatarImg} src={profile?.photos?.large || defaultAvatar} alt="avatar"/>
                         <img className={s.addIcon} src={uploadAvatarIcon} alt="addIcon"/>
                         <label>
                             <div className={s.uploadFileArea}></div>
-                            <input type="file" onChange={onAvatarSelected} hidden/>
+                            <input
+                                type="file"
+                                onChange={onAvatarSelected}
+                                hidden
+                            />
                         </label>
                     </div>
                 )}
             {!isOwner &&
                 (
-                    <div className={s.userAvatar}>
+                    <div className={`${s.userAvatar} ${s.avatar}`}>
                         <img className={s.avatarImg} src={profile?.photos?.large || defaultAvatar} alt="avatar"/>
                     </div>
                 )}
@@ -38,7 +42,13 @@ export const ProfileInfo: FC<ProfileInfoPropsType> = ({profile, updateAvatar, up
                 <div className={s.infoName}>
                     <p>{profile?.fullName}</p>
                 </div>
-                <ProfileStatus isOwner={isOwner} status={status} updateStatus={updateStatus}/>
+                <div>
+                    <ProfileStatus
+                        isOwner={isOwner}
+                        status={status}
+                        updateStatus={updateStatus}
+                    />
+                </div>
             </div>
         </div>
     );

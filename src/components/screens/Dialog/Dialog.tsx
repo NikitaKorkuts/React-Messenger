@@ -4,6 +4,8 @@ import {Formik} from 'formik';
 import * as yup from 'yup';
 
 import {Textarea} from '../../ui/Textarea/Textarea';
+import {getFormattedLastUserActivityDate} from '../../../utils/dates/getFormattedLastUserActivityDate';
+import {MessageTypesEnum} from '../../../store/dialogs/dialogs.types';
 
 import {DialogPropsType} from './dialog.types';
 import {MessageItem} from './MessageItem';
@@ -22,6 +24,8 @@ export const Dialog: FC<DialogPropsType> = ({
     compareDates,
     getFormattedDateWithFullMonth,
     getFormattedDateHMM,
+    activeDialog,
+    deleteMessage,
 }) => {
     const MessagesElements = updatingMessages.map((m, i) => {
         const nextMessage = updatingMessages[i + 1] || notUpdatingMessages[0];
@@ -32,7 +36,6 @@ export const Dialog: FC<DialogPropsType> = ({
                 {!compareDates(m.addedAt, nextMessage?.addedAt) && (
                     <SeparatingDateItem
                         date={getFormattedDateWithFullMonth(m.addedAt)}
-                        isLast={i === updatingMessages.length-1}
                     />
                 )}
 
@@ -48,6 +51,8 @@ export const Dialog: FC<DialogPropsType> = ({
                     authUserProfile={authUserProfile}
                     isSameSender={isSameSender}
                     getFormattedDateHMM={getFormattedDateHMM}
+                    deleteMessage={deleteMessage}
+                    messageType={MessageTypesEnum.updatingMessage}
                 />
             </div>
 
@@ -64,6 +69,11 @@ export const Dialog: FC<DialogPropsType> = ({
             id="scrollableDiv"
             className={s.dialog}
         >
+            {activeDialog?.lastUserActivityDate && (
+                <div className={s.lastUserActivityDate}>
+                    <span>{getFormattedLastUserActivityDate(activeDialog?.lastUserActivityDate)}</span>
+                </div>
+            )}
 
             <Formik
                 initialValues={{msgBody: ''}}
@@ -95,23 +105,28 @@ export const Dialog: FC<DialogPropsType> = ({
                                     onBlur: handleBlur,
                                     value: values.msgBody,
                                     onChange: handleChange,
-                                    placeholder: 'Write message...',
+                                    placeholder: 'Напишите сообщение...',
                                 }}
                             />
-                            <button className={s.sendMessageBtn} type="submit">Submit</button>
+                            <button className={s.sendMessageBtn} type="submit">Отправить</button>
                         </div>
                     </form>
                 )}
             </Formik>
 
-            {MessagesElements}
+            {updatingMessages.length !== 0
+                ?
+                MessagesElements
+                : (
+                    <span className={s.noMessages}>Нет сообщений</span>
+                )}
 
             {notUpdatingMessages.length !== 0 && <InfiniteScroll
                 next={fetchNotUpdatingMessages}
                 inverse={true}
                 className={s.infiniteScroll}
                 hasMore={currentPage !== totalPagesCount}
-                loader={<h4 className={s.loaderText}>Loading...</h4>}
+                loader={<h4 className={s.loaderText}>Загрузка...</h4>}
                 dataLength={notUpdatingMessages.length}
                 scrollableTarget="scrollableDiv"
             >
@@ -125,7 +140,6 @@ export const Dialog: FC<DialogPropsType> = ({
                             {!compareDates(m.addedAt, nextMessage?.addedAt) && (
                                 <SeparatingDateItem
                                     date={getFormattedDateWithFullMonth(m.addedAt)}
-                                    isLast={i === notUpdatingMessages.length-1}
                                 />
                             )}
 
@@ -141,6 +155,8 @@ export const Dialog: FC<DialogPropsType> = ({
                                 authUserProfile={authUserProfile}
                                 isSameSender={isSameSender}
                                 getFormattedDateHMM={getFormattedDateHMM}
+                                deleteMessage={deleteMessage}
+                                messageType={MessageTypesEnum.notUpdatingMessage}
                             />
                         </div>
                     );

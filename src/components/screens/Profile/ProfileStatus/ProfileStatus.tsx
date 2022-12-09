@@ -1,5 +1,6 @@
 import React, {ChangeEvent} from 'react';
 
+import editIcon from '../../../../assets/icons/edit-cursor.png';
 import {ProfileStatusPropsType, ProfileStatusStateType} from '../profile.types';
 import s from '../profile.module.scss';
 
@@ -41,18 +42,25 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType, Profi
             return (
                 <>
                     {!this.state.editMode && (
-                        <div>
-                            <p
+                        <div className={`${s.status} ${s.ownerStatus}`}>
+                            <span
                                 className={s.aboutMeText}
                                 onClick={this.activateEditMode}
                             >
                                 {status || 'no status'}
-                            </p>
+                                <img
+                                    src={editIcon}
+                                    alt="edit-icon"
+                                    className={s.statusEditIcon}
+                                />
+                            </span>
+
                         </div>
                     )}
                     {this.state.editMode && (
                         <div>
                             <input
+                                className={s.editStatusForm}
                                 type="text"
                                 onChange={this.onStatusChange}
                                 autoFocus={true}
@@ -65,7 +73,7 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType, Profi
             );
         }
         return (
-            <div>
+            <div className={s.status}>
                 <p className={s.aboutMeText}>
                     {status || 'no status'}
                 </p>

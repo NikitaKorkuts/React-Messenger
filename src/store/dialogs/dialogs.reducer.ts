@@ -2,10 +2,12 @@ import {ProfileType} from '../profile/profile.types';
 
 import {DialogsActionsType, DialogsInitialStateType, DialogType, MessageType} from './dialogs.types';
 import {
-    CHATTING_USER_PROFILE_RECEIVED,
+    CHATTING_USER_PROFILE_RECEIVED, DELETE_NOT_UPDATING_MESSAGE, DELETE_UPDATING_MESSAGE,
     DIALOGS_RECEIVED,
     MESSAGES_RECEIVED,
     RESET_MESSAGES,
+    SET_ACTIVE_DIALOG,
+    SET_ACTIVE_DIALOG_ID,
     SET_ARE_MESSAGES_FETCHING,
     SET_CURRENT_PAGE,
     SET_IS_MESSAGE_SENDING,
@@ -26,6 +28,8 @@ export const dialogsInitialState = {
     pageCount: 20,
     totalPagesCount: 0,
     newMessagesCount: 0,
+    activeDialogId: null as null | number,
+    activeDialog: null as null | DialogType,
 };
 
 export const dialogsReducer = (state = dialogsInitialState, action: DialogsActionsType): DialogsInitialStateType => {
@@ -50,6 +54,20 @@ export const dialogsReducer = (state = dialogsInitialState, action: DialogsActio
         return {...state, updatingMessages: [], notUpdatingMessages: [], currentPage: 2};
     case SET_NEW_MESSAGES_COUNT:
         return {...state, newMessagesCount: action.payload.newMessagesCount};
+    case SET_ACTIVE_DIALOG_ID:
+        return {...state, activeDialogId: action.payload.activeDialogId};
+    case SET_ACTIVE_DIALOG:
+        return {...state, activeDialog: action.payload.activeDialog};
+    case DELETE_UPDATING_MESSAGE:
+        return {
+            ...state,
+            updatingMessages: state.updatingMessages.filter(m => m.id !== action.payload.messageId),
+        };
+    case DELETE_NOT_UPDATING_MESSAGE:
+        return {
+            ...state,
+            notUpdatingMessages: state.notUpdatingMessages.filter(m => m.id !== action.payload.messageId),
+        };
     default:
         return state;
     }

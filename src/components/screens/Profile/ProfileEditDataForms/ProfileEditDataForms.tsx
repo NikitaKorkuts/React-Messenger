@@ -41,7 +41,7 @@ export const ProfileEditDataForms: FC<ProfileEditDataFormsPropsType> = ({profile
     const validationSchemaFields = {
         fullName: yup
             .string()
-            .max(50, 'Вы ввели слишком длинный email адресс')
+            .max(20, 'Вы ввели слишком длинное имя')
             .required('Введите имя'),
         aboutMe: yup
             .string()
@@ -56,144 +56,154 @@ export const ProfileEditDataForms: FC<ProfileEditDataFormsPropsType> = ({profile
 
 
     return (
-        <Formik
-            initialValues={initialValues}
-            validateOnBlur
-            onSubmit={(values, {setStatus, setErrors}) => submit(values, setStatus, setErrors)}
-            validationSchema={yup.object().shape(validationSchemaFields)}
-        >
-            {({
-                values,
-                handleChange,
-                touched,
-                errors,
-                handleBlur,
-                handleSubmit,
-                status,
-            }) => {
 
-                return (
-                    <form className={s.formLogin} onSubmit={handleSubmit}>
+        <div>
+            <Formik
+                initialValues={initialValues}
+                validateOnBlur
+                onSubmit={(values, {setStatus, setErrors}) => submit(values, setStatus, setErrors)}
+                validationSchema={yup.object().shape(validationSchemaFields)}
+            >
+                {({
+                      values,
+                      handleChange,
+                      touched,
+                      errors,
+                      handleBlur,
+                      handleSubmit,
+                      status,
+                  }) => {
 
-                        <div className={s.formLogInWithEmail}>
+                    return (
+                        <div>
+                            <form className={s.formLogin} onSubmit={handleSubmit}>
 
-                            <div className={s.formTitleRow}>
-                                <h1>Редактировать Профиль</h1>
-                            </div>
+                                <div className={s.formLogInWithEmail}>
 
-                            <div className={s.formRow}>
-                                <label>
-                                    <p>Имя</p>
-                                    <Input
-                                        name="fullName"
-                                        hasError={touched.fullName && errors.fullName}
-                                        error={errors.fullName}
-                                        props={{
-                                            onBlur: handleBlur,
-                                            value: values.fullName,
-                                            onChange: handleChange,
-                                        }}
-                                    />
-                                </label>
-                            </div>
+                                    <div className={s.formTitleRow}>
+                                        <h1>Редактировать Профиль</h1>
+                                    </div>
 
-                            <div className={s.formRow}>
-                                <label>
-                                    <p>Обо Мне</p>
-                                    <Textarea
-                                        name="aboutMe"
-                                        hasError={touched.aboutMe && errors.aboutMe}
-                                        error={errors.aboutMe}
-                                        props={{
-                                            onBlur: handleBlur,
-                                            value: values.aboutMe,
-                                            onChange: handleChange,
-                                        }}
-                                    />
-                                </label>
-                            </div>
+                                    <div className={s.formRow}>
+                                        <label>
+                                            <p>Имя</p>
+                                            <Input
+                                                name="fullName"
+                                                hasError={touched.fullName && errors.fullName}
+                                                error={errors.fullName}
+                                                props={{
+                                                    onBlur: handleBlur,
+                                                    value: values.fullName,
+                                                    onChange: handleChange,
+                                                }}
+                                            />
+                                        </label>
+                                    </div>
 
-                            <div className={s.formRow}>
-                                <label className={s.formCheckbox}>
-                                    <p>Ищу Работу</p>
-                                    <Input
-                                        name="lookingForAJob"
-                                        type="checkbox"
-                                        checked={values.lookingForAJob}
-                                        props={{
-                                            onBlur: handleBlur,
-                                            onChange: handleChange,
-                                        }}
-                                    />
-                                </label>
-                            </div>
+                                    <div className={s.formRow}>
+                                        <label>
+                                            <p>Обо Мне</p>
+                                            <Textarea
+                                                name="aboutMe"
+                                                hasError={touched.aboutMe && errors.aboutMe}
+                                                error={errors.aboutMe}
+                                                props={{
+                                                    onBlur: handleBlur,
+                                                    value: values.aboutMe,
+                                                    onChange: handleChange,
+                                                }}
+                                            />
+                                        </label>
+                                    </div>
 
-                            <div className={s.formRow}>
-                                <label>
-                                    <p>Мои Навыки</p>
-                                    <Textarea
-                                        name="lookingForAJobDescription"
-                                        hasError={touched.lookingForAJobDescription && errors.lookingForAJobDescription}
-                                        error={errors.lookingForAJobDescription}
-                                        props={{
-                                            onBlur: handleBlur,
-                                            value: values.lookingForAJobDescription,
-                                            onChange: handleChange,
-                                        }}
-                                    />
-                                </label>
-                            </div>
+                                    <div className={s.formRow}>
+                                        <label className={s.formCheckbox}>
+                                            <p>Ищу Работу</p>
+                                            <Input
+                                                name="lookingForAJob"
+                                                type="checkbox"
+                                                checked={values.lookingForAJob}
+                                                props={{
+                                                    onBlur: handleBlur,
+                                                    onChange: handleChange,
+                                                }}
+                                            />
+                                        </label>
+                                    </div>
 
-                            <div className={s.formTitleRow}>
-                                <h1>Редактировать Контакты</h1>
-                            </div>
+                                    <div className={s.formRow}>
+                                        <label>
+                                            <p>Мои Навыки</p>
+                                            <Textarea
+                                                name="lookingForAJobDescription"
+                                                hasError={
+                                                    touched.lookingForAJobDescription &&
+                                                    errors.lookingForAJobDescription
+                                                }
+                                                error={errors.lookingForAJobDescription}
+                                                props={{
+                                                    onBlur: handleBlur,
+                                                    value: values.lookingForAJobDescription,
+                                                    onChange: handleChange,
+                                                }}
+                                            />
+                                        </label>
+                                    </div>
 
-                            {Object.keys(profile.contacts as ContactsType).map(key => {
-                                if (values.contacts) {
-                                    return (
+                                    <div className={s.formTitleRow}>
+                                        <h1>Редактировать Контакты</h1>
+                                    </div>
+
+                                    {Object.keys(profile.contacts as ContactsType).map(key => {
+                                        if (values.contacts) {
+                                            return (
+                                                <div
+                                                    className={s.formRow}
+                                                    key={key}
+                                                >
+                                                    <label>
+                                                        <p>{key}</p>
+                                                        <Input
+                                                            hasError={
+                                                                getIn(touched.contacts, key) &&
+                                                                getIn(errors.contacts, key)
+                                                            }
+                                                            error={getIn(errors.contacts, key)}
+                                                            name={'contacts.' + key}
+                                                            props={{
+                                                                onBlur: handleBlur,
+                                                                value: values.contacts[key],
+                                                                onChange: handleChange,
+                                                            }
+                                                            }
+                                                        />
+                                                    </label>
+                                                </div>
+                                            );
+                                        }
+                                    })}
+
+                                    {status?.error && (
                                         <div className={s.formRow}>
                                             <label>
-                                                <p>{key}</p>
-                                                <Input
-                                                    hasError={
-                                                        getIn(touched.contacts, key) &&
-                                                        getIn(errors.contacts, key)
-                                                    }
-                                                    error={getIn(errors.contacts, key)}
-                                                    name={'contacts.' + key}
-                                                    props={{
-                                                        onBlur: handleBlur,
-                                                        value: values.contacts[key],
-                                                        onChange: handleChange,
-                                                    }
-                                                    }
-                                                />
+                                                <span className={s.formErrorText}>{status?.error}</span>
                                             </label>
-                                        </div>
-                                    );
-                                }
-                            })}
+                                        </div>)
+                                    }
 
-                            {status?.error && (
-                                <div className={s.formRow}>
-                                    <label>
-                                        <span className={s.formErrorText}>{status?.error}</span>
-                                    </label>
-                                </div>)
-                            }
+                                    <div className={s.formRow}>
+                                        <button type="submit">Сохранить Изменения</button>
+                                    </div>
 
-                            <div className={s.formRow}>
-                                <button type="submit">Сохранить Изменения</button>
-                            </div>
+                                </div>
 
+                            </form>
                         </div>
 
-                    </form>
-                )}
-            }
-
-
-
-        </Formik>
+                    )
+                }
+                }
+            </Formik>
+        </div>
     );
 };

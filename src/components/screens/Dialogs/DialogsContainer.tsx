@@ -8,23 +8,10 @@ import {Dialogs} from './Dialogs';
 import {DialogsContainerPropsType} from './dialogs.types';
 
 class DialogsContainer extends Component<DialogsContainerPropsType> {
-    newMessagesCountRequestTimer: ReturnType<typeof setTimeout> = setTimeout(() => {
-    });
     componentDidMount() {
-        const {getDialogs, getNewMessagesCount} = this.props;
+        const {getDialogs} = this.props;
 
         getDialogs();
-
-        this.newMessagesCountRequestTimer = setInterval(
-            () => {
-                getNewMessagesCount();
-            }, 2000,
-        );
-
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.newMessagesCountRequestTimer);
     }
 
     componentDidUpdate(prevProps: DialogsContainerPropsType) {
@@ -36,11 +23,12 @@ class DialogsContainer extends Component<DialogsContainerPropsType> {
     }
 
     render() {
-        const {dialogs} = this.props;
+        const {dialogs, authUserId} = this.props;
 
         return (
             <Dialogs
                 dialogs={dialogs}
+                authUserId={authUserId}
             />
         );
     }
@@ -49,6 +37,7 @@ class DialogsContainer extends Component<DialogsContainerPropsType> {
 const mapStateToProps = (state: AppStateType) => {
     return {
         dialogs: state.dialogs.dialogs,
+        authUserId: state.auth.userId,
         newMessagesCount: state.dialogs.newMessagesCount,
     };
 };

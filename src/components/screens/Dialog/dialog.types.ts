@@ -1,4 +1,4 @@
-import {MessageType} from '../../../store/dialogs/dialogs.types';
+import {DialogType, MessageType, MessageTypesEnum} from '../../../store/dialogs/dialogs.types';
 import {ProfileType} from '../../../store/profile/profile.types';
 
 export type DialogPropsType = {
@@ -13,6 +13,8 @@ export type DialogPropsType = {
     compareDates: (date1: Date, date2: Date) => boolean
     getFormattedDateWithFullMonth: (date: Date) => string
     getFormattedDateHMM: (date: Date) => string
+    activeDialog: DialogType
+    deleteMessage: (id: string, messageTypesEnum: MessageTypesEnum) => void
 }
 
 export type DialogContainerPropsType = {
@@ -31,6 +33,11 @@ export type DialogContainerPropsType = {
     sendMessage: (dialogId: number, msgBody: string) => void
     isMessageSending: boolean
     resetMessages: () => void
+    getActiveDialog: (activeDialogId: number | null) => void
+    setActiveDialogId: (activeDialogId: number | null) => void
+    activeDialogId: number | null
+    activeDialog: DialogType
+    deleteMessage: (id: string, MessageTypesEnum: MessageTypesEnum) => void
 }
 
 export type MessageItemPropsType = {
@@ -44,6 +51,8 @@ export type MessageItemPropsType = {
     authUserProfile: ProfileType
     isSameSender: boolean
     getFormattedDateHMM: (date: Date) => string
+    deleteMessage: (id: string, messageType: MessageTypesEnum) => void
+    messageType: MessageTypesEnum
 }
 
 export type MessagesResponseType = {
@@ -54,5 +63,4 @@ export type MessagesResponseType = {
 
 export type SeparatingDateItemPropsType = {
     date: string
-    isLast: boolean
 }

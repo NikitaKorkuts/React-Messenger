@@ -6,7 +6,8 @@ import {Navigate} from 'react-router-dom';
 import {withRouter} from '../../../hocs/withRouter';
 import {AppStateType} from '../../../store/store.types';
 import {
-    dialogsActions,
+    deleteMessage,
+    dialogsActions, getActiveDialog,
     getChattingUserProfile,
     getMessages,
     getTotalPagesCount, sendMessage,
@@ -25,58 +26,86 @@ class DialogContainer extends Component<RouterType & DialogContainerPropsType> {
     dialogEndRef: RefObject<HTMLDivElement> = React.createRef();
     messagesRequestTimer: ReturnType<typeof setTimeout> = setTimeout(() => {
     });
-    chosenDialogId = this.props.router.params.id;
 
     componentDidMount() {
-        const {getMessages, getChattingUserProfile, pageCount, getTotalPagesCount} = this.props;
+        const {setActiveDialogId, router} = this.props;
 
-        if (this.chosenDialogId) {
-            getTotalPagesCount(this.chosenDialogId);
-            getMessages(this.chosenDialogId, 1, pageCount);
-            getMessages(this.chosenDialogId, 2, pageCount);
-            getChattingUserProfile(this.chosenDialogId);
-
-            this.dialogEndRef.current?.scrollIntoView({behavior: 'smooth'});
-        }
+        setActiveDialogId(Number(router.params.id));
     }
 
     componentWillUnmount() {
-        const {resetMessages} = this.props;
+        const {resetMessages, setActiveDialogId, getActiveDialog} = this.props;
 
         if (this.messagesRequestTimer) clearTimeout(this.messagesRequestTimer);
         resetMessages();
+        setActiveDialogId(null);
+        getActiveDialog(null);
     }
 
 
     UNSAFE_componentWillUpdate(nextProps: RouterType & DialogContainerPropsType) {
-        const {updatingMessages, getMessages, pageCount, router, resetMessages} = this.props;
+        const {
+            updatingMessages,
+            getMessages,
+            pageCount,
+            router,
+            resetMessages,
+            activeDialogId,
+            setActiveDialogId,
+        } = this.props;
 
         if (nextProps.updatingMessages !== updatingMessages) {
             if (this.messagesRequestTimer) clearTimeout(this.messagesRequestTimer);
-            if (this.chosenDialogId) {
+            if (activeDialogId) {
                 this.messagesRequestTimer = setTimeout(() => {
-                    getMessages(this.chosenDialogId, 1, pageCount);
+                    getMessages(activeDialogId, 1, pageCount);
                 }, 2000);
             }
         }
 
         if (router.params.id !== nextProps.router.params.id) {
             resetMessages();
-            this.chosenDialogId = router.params.id;
+            setActiveDialogId(Number(nextProps.router.params.id));
+        }
+    }
+
+    componentDidUpdate(prevProps: RouterType & DialogContainerPropsType) {
+        const {
+            activeDialogId,
+            pageCount,
+            getActiveDialog,
+            getTotalPagesCount,
+            getMessages,
+            getChattingUserProfile,
+        } = this.props;
+
+        if (activeDialogId !== prevProps.activeDialogId) {
+            if (activeDialogId) {
+                getTotalPagesCount(activeDialogId);
+                getMessages(activeDialogId, 1, pageCount);
+                getMessages(activeDialogId, 2, pageCount);
+                getChattingUserProfile(activeDialogId);
+                getActiveDialog(activeDialogId);
+
+                this.dialogEndRef.current?.scrollIntoView({behavior: 'smooth'});
+            }
         }
     }
 
     fetchNotUpdatingMessages = () => {
-        const {setCurrentPage, getMessages, currentPage, pageCount} = this.props;
+        const {setCurrentPage, getMessages, currentPage, pageCount, activeDialogId} = this.props;
 
-        setCurrentPage(currentPage + 1);
-        getMessages(this.chosenDialogId, currentPage + 1, pageCount);
+        if (activeDialogId) {
+            setCurrentPage(currentPage + 1);
+            getMessages(activeDialogId, currentPage + 1, pageCount);
+        }
     };
 
     sendMessage = (msgBody: string) => {
-        const {sendMessage} = this.props;
-
-        sendMessage(this.chosenDialogId, msgBody);
+        const {sendMessage, activeDialogId} = this.props;
+        if (activeDialogId) {
+            sendMessage(activeDialogId, msgBody);
+        }
     };
 
     render() {
@@ -88,9 +117,12 @@ class DialogContainer extends Component<RouterType & DialogContainerPropsType> {
             currentPage,
             totalPagesCount,
             isMessageSending,
+            router,
+            activeDialog,
+            deleteMessage,
         } = this.props;
 
-        if (!this.chosenDialogId) {
+        if (!router.params.id) {
             return <Navigate to={'/dialogs'}/>;
         }
         return (
@@ -107,9 +139,11 @@ class DialogContainer extends Component<RouterType & DialogContainerPropsType> {
                     compareDates={compareDates}
                     getFormattedDateWithFullMonth={getFormattedDateWithFullMonth}
                     getFormattedDateHMM={getFormattedDateHMM}
+                    activeDialog={activeDialog}
+                    deleteMessage={deleteMessage}
                 />
                 <div ref={this.dialogEndRef}/>
-                {isMessageSending && <Preloader />}
+                {isMessageSending && <Preloader/>}
             </div>
         );
     }
@@ -125,6 +159,8 @@ const mapStateToProps = (state: AppStateType) => ({
     pageCount: state.dialogs.pageCount,
     totalPagesCount: state.dialogs.totalPagesCount,
     isMessageSending: state.dialogs.isMessageSending,
+    activeDialogId: state.dialogs.activeDialogId,
+    activeDialog: state.dialogs.activeDialog,
 });
 
 
@@ -135,4 +171,7 @@ export default compose<React.ComponentType>(withRouter, connect(mapStateToProps,
     setCurrentPage: dialogsActions.setCurrentPage,
     resetMessages: dialogsActions.resetMessages,
     sendMessage,
+    getActiveDialog,
+    setActiveDialogId: dialogsActions.setActiveDialogId,
+    deleteMessage,
 }))(DialogContainer)

@@ -13,6 +13,11 @@ export type ProfileContainerPropsType = {
     setProfileUpdatingStatus: (status: string) => void
     updateUserAvatar: (image: File) => Promise<void>
     updateProfile: (profile: ProfileType) => Promise<void>
+    getIsFriend: (id: number | null) => Promise<void>
+    isFriend: boolean | null
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    setIsFriend: (isFriend: boolean | null) => void
 }
 
 export type ProfilePropsType = {
@@ -28,6 +33,10 @@ export type ProfilePropsType = {
         setStatus: (status: object) => void,
         setErrors: (errors: object) => void
     ) => Promise<void>
+    isFriend: boolean | null
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    setIsFriend: (isFriend: boolean | null) => void
 }
 
 export type ProfileJobSearchStatusType = {
@@ -36,14 +45,11 @@ export type ProfileJobSearchStatusType = {
 
 export type ProfileAboutMePropsType = {
     aboutMe: Nullable<string>
+    lookingForAJobDescription: Nullable<string>
 }
 
 export type ProfileContactsPropsType = {
     contacts: Nullable<ContactsType>
-}
-
-export type ProfileProfessionalSkillsPropsType = {
-    lookingForAJobDescription: Nullable<string>
 }
 
 export type ProfileInfoPropsType = {

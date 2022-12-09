@@ -10,11 +10,16 @@ export const ProfileContacts: FC<ProfileContactsPropsType> = ({contacts}) => {
         if (contacts[key]) {
             const contact = (
                 <div
-                    key={contacts[key]}
-                    className={s.contact}>
-                    <p>{`${key}: `}
-                        <a href={contacts[key] as string}>{contacts[key]}</a>
-                    </p>
+                    key={key}
+                    className={s.contact}
+                >
+                    <p className={s.contactHeader}>{`${key}`}</p>
+                    <a
+                        href={contacts[key] as string}
+                        className={s.contactLink}
+                    >
+                        {contacts[key]} &#10138;
+                    </a>
                 </div>
             );
             contactElements.push(contact);
@@ -23,8 +28,8 @@ export const ProfileContacts: FC<ProfileContactsPropsType> = ({contacts}) => {
 
     if (contactElements.length > 0) {
         return (
-            <div>
-                <h1>Contacts</h1>
+            <div className={`${s.contentBlock} ${s.contactsBlock}`}>
+                <h1 className={s.header}>Контакты</h1>
                 {contactElements}
             </div>
         );

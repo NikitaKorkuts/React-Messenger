@@ -7,8 +7,7 @@ import {FilterType} from '../../../store/users/users.types';
 import {UsersPropsType} from './users.types';
 import {UserItem} from './UserItem';
 import {UsersSearchForm} from './UsersSearchForm/UsersSearchForm';
-
-
+import s from './user.module.scss';
 
 export const Users: FC<UsersPropsType> = ({
     users,
@@ -34,6 +33,7 @@ export const Users: FC<UsersPropsType> = ({
                 isFollowingInProgress={isFollowingInProgress}
                 unfollow={unfollow}
                 follow={follow}
+                status={u.status}
             />);
     },
     );
@@ -53,14 +53,19 @@ export const Users: FC<UsersPropsType> = ({
                 onFilterChanged={onFilterChanged}
                 filter={filter}
             />
-            <Pagination
-                totalItemsCount={totalUsersCount}
-                currentPage={currentPage}
-                onPageChanged={onPageChanged}
-                pageSize={pageSize}
-                filter={filter}
-            />
-            {UserElements}
+            {totalUsersCount/pageSize > 1 && (
+                <Pagination
+                    totalItemsCount={totalUsersCount}
+                    currentPage={currentPage}
+                    onPageChanged={onPageChanged}
+                    pageSize={pageSize}
+                    filter={filter}
+                />
+            )}
+            <div className={s.users}>
+                {UserElements}
+            </div>
+
         </div>
     );
 };

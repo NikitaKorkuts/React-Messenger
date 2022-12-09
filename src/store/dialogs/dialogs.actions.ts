@@ -4,14 +4,27 @@ import {dialogsServieces} from '../../services/dialogs/dialogs.servieces';
 import {ProfileType} from '../profile/profile.types';
 import {profileServices} from '../../services/profile/profile.services';
 import {reversedMessagesWithConvertedDate} from '../../utils/messagesWithConvertedDate';
+import {dialogsWithConvertedDate} from '../../utils/dialogsWithConvertedDate';
+import {ResultCodesEnum} from '../../services/services.types';
 
 import {
     CHATTING_USER_PROFILE_RECEIVED,
+    DELETE_NOT_UPDATING_MESSAGE,
+    DELETE_UPDATING_MESSAGE,
     DIALOGS_RECEIVED,
-    MESSAGES_RECEIVED, RESET_MESSAGES, SET_ARE_MESSAGES_FETCHING,
-    SET_CURRENT_PAGE, SET_IS_MESSAGE_SENDING, SET_NEW_MESSAGES_COUNT, SET_NOT_UPDATING_MESSAGES, SET_TOTAL_PAGES_COUNT,
+    MESSAGES_RECEIVED,
+    RESET_MESSAGES,
+    SET_ACTIVE_DIALOG,
+    SET_ACTIVE_DIALOG_ID,
+    SET_ARE_MESSAGES_FETCHING,
+    SET_CURRENT_PAGE,
+    SET_IS_MESSAGE_SENDING,
+    SET_NEW_MESSAGES_COUNT,
+    SET_NOT_UPDATING_MESSAGES,
+    SET_TOTAL_PAGES_COUNT,
 } from './dialogs.consts';
-import {DialogsActionsType, DialogType, MessageType} from './dialogs.types';
+import {DialogsActionsType, DialogType, MessageType, MessageTypesEnum} from './dialogs.types';
+
 
 export const dialogsActions = {
     dialogsReceived: (dialogs: DialogType[]) => ({
@@ -53,12 +66,45 @@ export const dialogsActions = {
         type: SET_NEW_MESSAGES_COUNT,
         payload: {newMessagesCount},
     } as const),
+    setActiveDialogId: (activeDialogId: number | null) => ({
+        type: SET_ACTIVE_DIALOG_ID,
+        payload: {activeDialogId},
+    } as const),
+    setActiveDialog: (activeDialog: DialogType | null) => ({
+        type: SET_ACTIVE_DIALOG,
+        payload: {activeDialog},
+    } as const),
+    deleteUpdatingMessage: (messageId: string) => ({
+        type: DELETE_UPDATING_MESSAGE,
+        payload: {messageId},
+    } as const),
+    deleteNotUpdatingMessage: (messageId: string) => ({
+        type: DELETE_NOT_UPDATING_MESSAGE,
+        payload: {messageId},
+    } as const),
 };
 
 export const getDialogs = (): BasicThunkActionType<DialogsActionsType> => {
     return async (dispatch) => {
         const response = await dialogsServieces.getDialogs();
-        dispatch(dialogsActions.dialogsReceived(response));
+        let newResponse = dialogsWithConvertedDate(response);
+        newResponse = await Promise.all(newResponse.map(async (d) => {
+            if(d.hasNewMessages) {
+                return d;
+            }
+            const lastMessage = await dialogsServieces.getMessages(d.id, 1, 1);
+            if(lastMessage.items[0]) {
+                const newLastMessage = {
+                    ...lastMessage.items[0],
+                    body: lastMessage.items[0].body.replaceAll('<br />', ' ').slice(0, 15),
+                };
+
+                return {...d, lastMessage: newLastMessage};
+            }
+
+            return d;
+        }));
+        dispatch(dialogsActions.dialogsReceived(newResponse));
     };
 };
 
@@ -108,3 +154,39 @@ export const getNewMessagesCount = (): BasicThunkActionType<DialogsActionsType> 
         dispatch(dialogsActions.setNewMessagesCount(response));
     };
 };
+
+export const getActiveDialog = (activeDialogId: number | null): BasicThunkActionType<DialogsActionsType> => {
+    return async (dispatch, getState) => {
+        if(activeDialogId) {
+            let activeDialog = getState().dialogs.dialogs?.find(d => d.id === activeDialogId);
+            if (activeDialog) {
+                dispatch(dialogsActions.setActiveDialog(activeDialog));
+            } else {
+                const response = await dialogsServieces.getDialogs();
+                const newResponse = dialogsWithConvertedDate(response);
+                activeDialog = newResponse.find(d => d.id === activeDialogId);
+                if (activeDialog) {
+                    dispatch(dialogsActions.setActiveDialog(activeDialog));
+                }
+            }
+        } else {
+            dispatch(dialogsActions.setActiveDialog(null));
+        }
+    };
+};
+
+export const deleteMessage = (id: string, messageType: MessageTypesEnum): BasicThunkActionType<DialogsActionsType> => {
+    return async (dispatch) => {
+        const response = await dialogsServieces.deleteMessage(id);
+        if(response.resultCode === ResultCodesEnum.Success) {
+            if(messageType === MessageTypesEnum.updatingMessage) {
+                dispatch(dialogsActions.deleteUpdatingMessage(id));
+            } else if (messageType === MessageTypesEnum.notUpdatingMessage) {
+                dispatch(dialogsActions.deleteNotUpdatingMessage(id));
+            }
+        }
+    };
+};
+
+
+

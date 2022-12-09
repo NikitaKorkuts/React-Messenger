@@ -1,4 +1,4 @@
-import {UsersType} from '../../../types/types';
+import {Nullable, UsersType} from '../../../types/types';
 import {FilterType} from '../../../store/users/users.types';
 
 export type UsersContainerPropsType = {
@@ -41,4 +41,5 @@ export type UserItemPropsType = {
     isFollowingInProgress: Array<number>
     follow: (id: number) => Promise<void>
     unfollow: (id: number) => Promise<void>
+    status: Nullable<string>;
 }

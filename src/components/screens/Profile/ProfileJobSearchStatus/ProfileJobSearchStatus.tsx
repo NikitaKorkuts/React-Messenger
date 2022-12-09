@@ -7,13 +7,13 @@ export const ProfileJobSearchStatus: FC<ProfileJobSearchStatusType> = ({areLooki
     if (areLookingForJob) {
         return (
             <div className={s.jobSearchStatus}>
-                <h2>Job Search Status: <span className={s.activelyLooking}>Actively Looking</span></h2>
+                <h2>Статус поиска работы: <span className={s.activelyLooking}>В Активном Поиске</span></h2>
             </div>
         );
     }
     return (
         <div className={s.jobSearchStatus}>
-            <h2>Job Search Status: <span className={s.notLooking}>Not Looking</span></h2>
+            <h2>Статус поиска работы: <span className={s.notLooking}>Не в поиске</span></h2>
         </div>
     );
 };

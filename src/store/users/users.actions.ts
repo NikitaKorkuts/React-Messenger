@@ -11,7 +11,7 @@ import {
     ADD_TO_FRIENDS,
     REMOVE_FROM_FRIENDS,
     SET_CURRENT_PAGE,
-    SET_FILTER, SET_FRIENDS,
+    SET_FILTER,
     SET_TOTAL_USERS_COUNT,
     SET_USERS, TOGGLE_IS_FETCHING,
     TOGGLE_IS_FOLLOWING_IN_PROGRESS,
@@ -24,14 +24,13 @@ export const usersActions = {
     setCurrentPage: (page: number) => ({type: SET_CURRENT_PAGE, page} as const),
     setTotalUsersCount: (count: number) => ({type: SET_TOTAL_USERS_COUNT, count} as const),
     setFilter: (filter: FilterType) => ({type: SET_FILTER, filter} as const),
-    setFriends: (friends: Array<UsersType>) => ({type: SET_FRIENDS, friends} as const),
     setToggleIsFetching: (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching} as const),
     setToggleIsFollowingInProgress: (isFetching: boolean, userId: number) => ({
         type: TOGGLE_IS_FOLLOWING_IN_PROGRESS,
         isFetching,
         userId,
     } as const),
-}
+};
 
 export const requestUsers = (
     page: number,
@@ -79,11 +78,4 @@ export const unfollow = (userId: number): BasicThunkActionType<UsersActionsType>
         followServices.unfollow.bind(followServices),
         usersActions.removeFromFriends,
     );
-};
-
-export const requestFriends = (): BasicThunkActionType<UsersActionsType> => async (dispatch) => {
-    const response = await usersServices.getFriends();
-    if (!response.error) {
-        dispatch(usersActions.setFriends(response.items));
-    }
 };
