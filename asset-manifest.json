@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/React-Messenger/static/css/main.a8793a49.css",
-    "main.js": "/React-Messenger/static/js/main.b1eecf9e.js",
+    "main.js": "/React-Messenger/static/js/main.fe4df291.js",
     "static/css/316.06f94d24.chunk.css": "/React-Messenger/static/css/316.06f94d24.chunk.css",
-    "static/js/316.df80ca41.chunk.js": "/React-Messenger/static/js/316.df80ca41.chunk.js",
+    "static/js/316.0607e65e.chunk.js": "/React-Messenger/static/js/316.0607e65e.chunk.js",
     "static/css/65.fc573d5f.chunk.css": "/React-Messenger/static/css/65.fc573d5f.chunk.css",
-    "static/js/65.2796dad7.chunk.js": "/React-Messenger/static/js/65.2796dad7.chunk.js",
+    "static/js/65.7a512a38.chunk.js": "/React-Messenger/static/js/65.7a512a38.chunk.js",
     "static/css/318.5608c98b.chunk.css": "/React-Messenger/static/css/318.5608c98b.chunk.css",
-    "static/js/318.2f984ac6.chunk.js": "/React-Messenger/static/js/318.2f984ac6.chunk.js",
+    "static/js/318.c9a8abde.chunk.js": "/React-Messenger/static/js/318.c9a8abde.chunk.js",
     "static/css/604.4b65b054.chunk.css": "/React-Messenger/static/css/604.4b65b054.chunk.css",
-    "static/js/604.666b4e3a.chunk.js": "/React-Messenger/static/js/604.666b4e3a.chunk.js",
+    "static/js/604.f6b5a61f.chunk.js": "/React-Messenger/static/js/604.f6b5a61f.chunk.js",
     "static/css/271.5ff1a014.chunk.css": "/React-Messenger/static/css/271.5ff1a014.chunk.css",
-    "static/js/271.e5edeb11.chunk.js": "/React-Messenger/static/js/271.e5edeb11.chunk.js",
+    "static/js/271.497c7c49.chunk.js": "/React-Messenger/static/js/271.497c7c49.chunk.js",
     "static/js/705.dcd11e81.chunk.js": "/React-Messenger/static/js/705.dcd11e81.chunk.js",
     "static/js/132.bd75fa3f.chunk.js": "/React-Messenger/static/js/132.bd75fa3f.chunk.js",
     "static/media/HelveticaNeueBoldCondensed.eot": "/React-Messenger/static/media/HelveticaNeueBoldCondensed.5fb81c36cc15b45f058e.eot",
@@ -94,22 +94,22 @@
     "static/media/settingsIcon.svg": "/React-Messenger/static/media/settingsIcon.22b0774b856551c4d856ea83fa20463f.svg",
     "static/media/checkmark.svg": "/React-Messenger/static/media/checkmark.5d458d8e9d3a848de5d7562db61e3ea8.svg",
     "main.a8793a49.css.map": "/React-Messenger/static/css/main.a8793a49.css.map",
-    "main.b1eecf9e.js.map": "/React-Messenger/static/js/main.b1eecf9e.js.map",
+    "main.fe4df291.js.map": "/React-Messenger/static/js/main.fe4df291.js.map",
     "316.06f94d24.chunk.css.map": "/React-Messenger/static/css/316.06f94d24.chunk.css.map",
-    "316.df80ca41.chunk.js.map": "/React-Messenger/static/js/316.df80ca41.chunk.js.map",
+    "316.0607e65e.chunk.js.map": "/React-Messenger/static/js/316.0607e65e.chunk.js.map",
     "65.fc573d5f.chunk.css.map": "/React-Messenger/static/css/65.fc573d5f.chunk.css.map",
-    "65.2796dad7.chunk.js.map": "/React-Messenger/static/js/65.2796dad7.chunk.js.map",
+    "65.7a512a38.chunk.js.map": "/React-Messenger/static/js/65.7a512a38.chunk.js.map",
     "318.5608c98b.chunk.css.map": "/React-Messenger/static/css/318.5608c98b.chunk.css.map",
-    "318.2f984ac6.chunk.js.map": "/React-Messenger/static/js/318.2f984ac6.chunk.js.map",
+    "318.c9a8abde.chunk.js.map": "/React-Messenger/static/js/318.c9a8abde.chunk.js.map",
     "604.4b65b054.chunk.css.map": "/React-Messenger/static/css/604.4b65b054.chunk.css.map",
-    "604.666b4e3a.chunk.js.map": "/React-Messenger/static/js/604.666b4e3a.chunk.js.map",
+    "604.f6b5a61f.chunk.js.map": "/React-Messenger/static/js/604.f6b5a61f.chunk.js.map",
     "271.5ff1a014.chunk.css.map": "/React-Messenger/static/css/271.5ff1a014.chunk.css.map",
-    "271.e5edeb11.chunk.js.map": "/React-Messenger/static/js/271.e5edeb11.chunk.js.map",
+    "271.497c7c49.chunk.js.map": "/React-Messenger/static/js/271.497c7c49.chunk.js.map",
     "705.dcd11e81.chunk.js.map": "/React-Messenger/static/js/705.dcd11e81.chunk.js.map",
     "132.bd75fa3f.chunk.js.map": "/React-Messenger/static/js/132.bd75fa3f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a8793a49.css",
-    "static/js/main.b1eecf9e.js"
+    "static/js/main.fe4df291.js"
   ]
 }
