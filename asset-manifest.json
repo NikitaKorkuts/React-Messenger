@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/React-Messenger/static/css/main.a8793a49.css",
-    "main.js": "/React-Messenger/static/js/main.40b16c7f.js",
+    "main.js": "/React-Messenger/static/js/main.b1eecf9e.js",
     "static/css/316.06f94d24.chunk.css": "/React-Messenger/static/css/316.06f94d24.chunk.css",
     "static/js/316.df80ca41.chunk.js": "/React-Messenger/static/js/316.df80ca41.chunk.js",
     "static/css/65.fc573d5f.chunk.css": "/React-Messenger/static/css/65.fc573d5f.chunk.css",
@@ -94,7 +94,7 @@
     "static/media/settingsIcon.svg": "/React-Messenger/static/media/settingsIcon.22b0774b856551c4d856ea83fa20463f.svg",
     "static/media/checkmark.svg": "/React-Messenger/static/media/checkmark.5d458d8e9d3a848de5d7562db61e3ea8.svg",
     "main.a8793a49.css.map": "/React-Messenger/static/css/main.a8793a49.css.map",
-    "main.40b16c7f.js.map": "/React-Messenger/static/js/main.40b16c7f.js.map",
+    "main.b1eecf9e.js.map": "/React-Messenger/static/js/main.b1eecf9e.js.map",
     "316.06f94d24.chunk.css.map": "/React-Messenger/static/css/316.06f94d24.chunk.css.map",
     "316.df80ca41.chunk.js.map": "/React-Messenger/static/js/316.df80ca41.chunk.js.map",
     "65.fc573d5f.chunk.css.map": "/React-Messenger/static/css/65.fc573d5f.chunk.css.map",
@@ -110,6 +110,6 @@
   },
   "entrypoints": [
     "static/css/main.a8793a49.css",
-    "static/js/main.40b16c7f.js"
+    "static/js/main.b1eecf9e.js"
   ]
 }
