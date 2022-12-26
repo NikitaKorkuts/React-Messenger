@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/React-Messenger/static/css/main.91b7673b.css",
-    "main.js": "/React-Messenger/static/js/main.b8bdd42c.js",
-    "static/css/316.06f94d24.chunk.css": "/React-Messenger/static/css/316.06f94d24.chunk.css",
+    "main.css": "/React-Messenger/static/css/main.89f3b594.css",
+    "main.js": "/React-Messenger/static/js/main.e88288eb.js",
+    "static/css/316.f91ffd9c.chunk.css": "/React-Messenger/static/css/316.f91ffd9c.chunk.css",
     "static/js/316.0607e65e.chunk.js": "/React-Messenger/static/js/316.0607e65e.chunk.js",
     "static/css/65.fc573d5f.chunk.css": "/React-Messenger/static/css/65.fc573d5f.chunk.css",
     "static/js/65.7a512a38.chunk.js": "/React-Messenger/static/js/65.7a512a38.chunk.js",
-    "static/css/318.5608c98b.chunk.css": "/React-Messenger/static/css/318.5608c98b.chunk.css",
+    "static/css/318.0f9fea83.chunk.css": "/React-Messenger/static/css/318.0f9fea83.chunk.css",
     "static/js/318.c9a8abde.chunk.js": "/React-Messenger/static/js/318.c9a8abde.chunk.js",
-    "static/css/604.4b65b054.chunk.css": "/React-Messenger/static/css/604.4b65b054.chunk.css",
+    "static/css/604.83657d38.chunk.css": "/React-Messenger/static/css/604.83657d38.chunk.css",
     "static/js/604.f6b5a61f.chunk.js": "/React-Messenger/static/js/604.f6b5a61f.chunk.js",
     "static/css/271.5412d128.chunk.css": "/React-Messenger/static/css/271.5412d128.chunk.css",
     "static/js/271.cabf83a6.chunk.js": "/React-Messenger/static/js/271.cabf83a6.chunk.js",
@@ -93,15 +93,15 @@
     "static/media/search-icon.svg": "/React-Messenger/static/media/search-icon.ffcebc695e8f0740cf2227e640affb40.svg",
     "static/media/settingsIcon.svg": "/React-Messenger/static/media/settingsIcon.22b0774b856551c4d856ea83fa20463f.svg",
     "static/media/checkmark.svg": "/React-Messenger/static/media/checkmark.5d458d8e9d3a848de5d7562db61e3ea8.svg",
-    "main.91b7673b.css.map": "/React-Messenger/static/css/main.91b7673b.css.map",
-    "main.b8bdd42c.js.map": "/React-Messenger/static/js/main.b8bdd42c.js.map",
-    "316.06f94d24.chunk.css.map": "/React-Messenger/static/css/316.06f94d24.chunk.css.map",
+    "main.89f3b594.css.map": "/React-Messenger/static/css/main.89f3b594.css.map",
+    "main.e88288eb.js.map": "/React-Messenger/static/js/main.e88288eb.js.map",
+    "316.f91ffd9c.chunk.css.map": "/React-Messenger/static/css/316.f91ffd9c.chunk.css.map",
     "316.0607e65e.chunk.js.map": "/React-Messenger/static/js/316.0607e65e.chunk.js.map",
     "65.fc573d5f.chunk.css.map": "/React-Messenger/static/css/65.fc573d5f.chunk.css.map",
     "65.7a512a38.chunk.js.map": "/React-Messenger/static/js/65.7a512a38.chunk.js.map",
-    "318.5608c98b.chunk.css.map": "/React-Messenger/static/css/318.5608c98b.chunk.css.map",
+    "318.0f9fea83.chunk.css.map": "/React-Messenger/static/css/318.0f9fea83.chunk.css.map",
     "318.c9a8abde.chunk.js.map": "/React-Messenger/static/js/318.c9a8abde.chunk.js.map",
-    "604.4b65b054.chunk.css.map": "/React-Messenger/static/css/604.4b65b054.chunk.css.map",
+    "604.83657d38.chunk.css.map": "/React-Messenger/static/css/604.83657d38.chunk.css.map",
     "604.f6b5a61f.chunk.js.map": "/React-Messenger/static/js/604.f6b5a61f.chunk.js.map",
     "271.5412d128.chunk.css.map": "/React-Messenger/static/css/271.5412d128.chunk.css.map",
     "271.cabf83a6.chunk.js.map": "/React-Messenger/static/js/271.cabf83a6.chunk.js.map",
@@ -109,7 +109,7 @@
     "132.bd75fa3f.chunk.js.map": "/React-Messenger/static/js/132.bd75fa3f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.91b7673b.css",
-    "static/js/main.b8bdd42c.js"
+    "static/css/main.89f3b594.css",
+    "static/js/main.e88288eb.js"
   ]
 }
