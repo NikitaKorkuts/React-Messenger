@@ -1,8 +1,10 @@
 import {connect} from 'react-redux';
 import {Component} from 'react';
+import {compose} from 'redux';
 
 import {AppStateType} from '../../../store/store.types';
 import {getDialogs, getNewMessagesCount} from '../../../store/dialogs/dialogs.actions';
+import {withAuthRedirect} from '../../../hocs/withAuthRedirect';
 
 import {Dialogs} from './Dialogs';
 import {DialogsContainerPropsType} from './dialogs.types';
@@ -42,4 +44,7 @@ const mapStateToProps = (state: AppStateType) => {
     };
 };
 
-export default connect(mapStateToProps, {getDialogs, getNewMessagesCount})(DialogsContainer);
+export default compose<React.ComponentType>(withAuthRedirect, connect(mapStateToProps, {
+    getDialogs,
+    getNewMessagesCount,
+}))(DialogsContainer);

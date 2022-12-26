@@ -15,9 +15,5 @@ export const rootReducer = combineReducers({
     users: usersReducer,
 });
 
-// @ts-ignore
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
+export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-//@ts-ignore
-window.__store__ = store;

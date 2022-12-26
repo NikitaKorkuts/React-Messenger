@@ -29,9 +29,24 @@
     width: 20%;
     height: 100%;
     border: none;
+  }
+}
 
-    .searchOption {
+@media (max-width: 425px) {
+  .usersSearch {
+    margin: 60px auto 0 auto;
+    width: 95%;
+    padding: 15px;
 
+    .searchIcon {
+      width: 20px;
+      height: 20px;
+      top: 29%;
+      left: 10px;
+    }
+
+    .searchForm {
+      font-size: 16px;
     }
   }
 }

@@ -44,6 +44,7 @@ $background-color_2: #d6f0c3;
   .formTitleRow {
     text-align: center;
     margin-bottom: 60px;
+    margin-top: 120px;
   }
   h1 {
     display: inline-block;
@@ -124,8 +125,22 @@ $background-color_2: #d6f0c3;
     }
   }
 }
+
+@media (max-width: 768px) {
+  .formRow {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 600px) {
   .formLogInWithEmail {
+
+    button {
+      font-size: 12px;
+      padding: 15px 25px;
+    }
+
     .formWhiteBackground {
       width: 300px;
       padding-left: 35px;

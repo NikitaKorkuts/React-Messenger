@@ -1,6 +1,6 @@
 import React, {FC, Suspense} from 'react';
 import {connect, Provider} from 'react-redux';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {HashRouter, Route, Routes} from 'react-router-dom';
 import {compose} from 'redux';
 
 import {Layout} from './components/layout/Layout';
@@ -59,10 +59,10 @@ const AppContainer = compose<React.ComponentType>(
 
 export const MessangerApp: FC = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     );
 };

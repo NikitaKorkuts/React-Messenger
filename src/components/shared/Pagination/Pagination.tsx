@@ -52,25 +52,25 @@ export const Pagination: FC<PropsType> = ({
             <span
                 onClick={() => onPageChanged(1, filter)}
             >
-                First
+                &laquo;
             </span>
             &nbsp;
             <span
                 onClick={() => onPageChanged(previousPage, filter)}
             >
-                «
+                &lt;
             </span>
             {pages}
             <span
                 onClick={() => onPageChanged(nextPage, filter)}
             >
-                »
+                &gt;
             </span>
             &nbsp;
             <span
                 onClick={() => onPageChanged(pagesCount, filter)}
             >
-                Last
+                &raquo;
             </span>
         </div>
     );

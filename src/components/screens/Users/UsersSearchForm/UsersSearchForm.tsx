@@ -62,7 +62,7 @@ export const UsersSearchForm: FC<UsersSearchFormPropsType> = ({
                             className={s.searchForm}
                             type=""
                             name="term"
-                            autoFocus={true}
+                            // autoFocus={true}
                         />
 
                         <Field

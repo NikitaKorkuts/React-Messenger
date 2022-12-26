@@ -15,10 +15,10 @@ import {withRouter} from '../../../hocs/withRouter';
 import {AppStateType} from '../../../store/store.types';
 import {RouterType} from '../../../types/types';
 import {follow, unfollow} from '../../../store/users/users.actions';
+import {withAuthRedirect} from '../../../hocs/withAuthRedirect';
 
 import {Profile} from './Profile';
 import {ProfileContainerPropsType} from './profile.types';
-
 
 class ProfileContainer extends React.Component<RouterType & ProfileContainerPropsType> {
     __refreshUserProfile() {
@@ -92,7 +92,7 @@ const mapStateToProps = (state: AppStateType) => ({
     isFriend: state.profile.isFriend,
 });
 
-export default compose<React.ComponentType>(withRouter, connect(mapStateToProps, {
+export default compose<React.ComponentType>(withRouter, withAuthRedirect, connect(mapStateToProps, {
     getUserProfile,
     getUserStatus,
     updateUserStatus,

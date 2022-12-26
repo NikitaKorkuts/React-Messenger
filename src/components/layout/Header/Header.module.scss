@@ -16,7 +16,7 @@
     align-items: center;
     flex-wrap: wrap;
     max-width: 70%;
-    min-width: 430px;
+    min-width: 320px;
     margin: 0 auto;
   }
 
@@ -70,6 +70,7 @@
     text-decoration: none;
     font-size: 25px;
     cursor: pointer;
+    margin-right: 10px;
   }
 
   .profileLink {
@@ -83,13 +84,12 @@
       align-items: center;
       width: 140px;
       cursor: pointer;
-      -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none;   /* Chrome/Safari/Opera */
-      -khtml-user-select: none;    /* Konqueror */
-      -moz-user-select: none;      /* Firefox */
-      -ms-user-select: none;       /* Internet Explorer/Edge */
-      user-select: none;           /* Non-prefixed version, currently
-                                  not supported by any browser */
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     .dropdownMenuItems {
@@ -119,7 +119,6 @@
       }
     }
 
-
     .link{
       font-size: 17px;
       color: white;
@@ -140,6 +139,59 @@
       border-radius: 20%;
       margin: 0 20px;
       cursor: pointer
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    .wrapper {
+      max-width: 100%;
+      min-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    .wrapper {
+      .login {
+        font-size: 16px;
+      }
+    }
+
+    .profileLink {
+      margin-right: 5px;
+
+      .avatar {
+        display: none;
+      }
+
+      .link {
+        font-size: 13px;
+      }
+
+      .dropdownMenuItems {
+        a {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .search {
+      .searchIcon {
+        width: 20px;
+        height: 30px;
+        margin-left: 20px;
+        margin-right: 7px;
+      }
+
+      .chatIcon {
+        width: 20px;
+        height: 30px;
+        margin-left: 7px;
+        margin-right: 7px;
+      }
     }
   }
 }

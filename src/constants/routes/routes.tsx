@@ -1,4 +1,5 @@
 import React from 'react';
+import {Navigate} from 'react-router-dom';
 
 const DialogsPage = React.lazy(() => import('../../pages/Dialogs/DialogsPage'));
 export const DialogPage = React.lazy(() => import('../../pages/Dialog/DialogPage'));
@@ -34,6 +35,12 @@ export const routes = [
     {
         path: '/users',
         component: <UsersPage/>,
+        child: null,
+        childPath: null,
+    },
+    {
+        path: '*',
+        component: <Navigate to="/dialogs" />,
         child: null,
         childPath: null,
     },

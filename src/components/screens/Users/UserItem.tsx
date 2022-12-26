@@ -50,7 +50,7 @@ export const UserItem: FC<UserItemPropsType> = ({
 
     const getIsFollowing = () => {
         if(isFriend) {
-            return <span className={s.yourFriend} >&#10003; Вы подписаны</span>
+            return <span className={s.yourFriend} >&#10003; Вы подписаны</span>;
         }
     };
 

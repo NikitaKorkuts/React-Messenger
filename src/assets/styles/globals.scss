@@ -17,6 +17,19 @@ body {
 
 main {
   max-width: 70%;
-  min-width: 430px;
+  min-width: 320px;
   margin: 70px auto 0;
+}
+
+@media (max-width: 768px) {
+  main {
+    max-width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  main {
+    margin: 40px auto 0;
+  }
 }

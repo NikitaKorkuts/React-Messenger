@@ -17,14 +17,15 @@ class HeaderContainer extends Component<HeaderContainerPropsType & RouterType> {
     newMessagesCountRequestTimer: ReturnType<typeof setTimeout> = setTimeout(() => {
     });
     componentDidMount() {
-        const {getNewMessagesCount} = this.props;
+        const {getNewMessagesCount, isAuth} = this.props;
 
-        this.newMessagesCountRequestTimer = setInterval(
-            () => {
-                getNewMessagesCount();
-            }, 2000,
-        );
-
+        if(isAuth) {
+            this.newMessagesCountRequestTimer = setInterval(
+                () => {
+                    getNewMessagesCount();
+                }, 2000,
+            );
+        }
     }
 
     componentWillUnmount() {

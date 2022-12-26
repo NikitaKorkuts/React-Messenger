@@ -17,10 +17,12 @@ import {Preloader} from '../../shared/Preloader/Preloader';
 import {compareDates} from '../../../utils/dates/compareDate';
 import {getFormattedDateWithFullMonth} from '../../../utils/dates/getFormattedDateWithFullMonth';
 import {getFormattedDateHMM} from '../../../utils/dates/getFormattedDateHMM';
+import {withAuthRedirect} from '../../../hocs/withAuthRedirect';
 
 import s from './dialog.module.scss';
 import {DialogContainerPropsType} from './dialog.types';
 import {Dialog} from './Dialog';
+
 
 class DialogContainer extends Component<RouterType & DialogContainerPropsType> {
     dialogEndRef: RefObject<HTMLDivElement> = React.createRef();
@@ -164,7 +166,7 @@ const mapStateToProps = (state: AppStateType) => ({
 });
 
 
-export default compose<React.ComponentType>(withRouter, connect(mapStateToProps, {
+export default compose<React.ComponentType>(withRouter, withAuthRedirect, connect(mapStateToProps, {
     getMessages,
     getTotalPagesCount,
     getChattingUserProfile,

@@ -7,10 +7,10 @@ import {withRouter} from '../../../hocs/withRouter';
 import {AppStateType} from '../../../store/store.types';
 import {RouterType} from '../../../types/types';
 import {follow, requestUsers, unfollow, usersActions} from '../../../store/users/users.actions';
+import {withAuthRedirect} from '../../../hocs/withAuthRedirect';
 
 import {UsersContainerPropsType} from './users.types';
 import {Users} from './Users';
-
 
 class UsersContainer extends Component<RouterType & UsersContainerPropsType> {
 
@@ -102,7 +102,7 @@ const mapStateToProps = (state: AppStateType) => ({
 });
 
 
-export default compose<React.ComponentType>(withRouter, connect(mapStateToProps, {
+export default compose<React.ComponentType>(withRouter, withAuthRedirect, connect(mapStateToProps, {
     requestUsers,
     setCurrentPage: usersActions.setCurrentPage,
     follow,
