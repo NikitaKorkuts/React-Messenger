@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/React-Messenger/static/css/main.995c3cef.css",
-    "main.js": "/React-Messenger/static/js/main.a5455eee.js",
+    "main.js": "/React-Messenger/static/js/main.ecfd41f5.js",
     "static/css/316.25274de8.chunk.css": "/React-Messenger/static/css/316.25274de8.chunk.css",
     "static/js/316.0607e65e.chunk.js": "/React-Messenger/static/js/316.0607e65e.chunk.js",
-    "static/css/65.44613f86.chunk.css": "/React-Messenger/static/css/65.44613f86.chunk.css",
-    "static/js/65.7a512a38.chunk.js": "/React-Messenger/static/js/65.7a512a38.chunk.js",
+    "static/css/65.83261a82.chunk.css": "/React-Messenger/static/css/65.83261a82.chunk.css",
+    "static/js/65.eff66e31.chunk.js": "/React-Messenger/static/js/65.eff66e31.chunk.js",
     "static/css/318.0f9fea83.chunk.css": "/React-Messenger/static/css/318.0f9fea83.chunk.css",
     "static/js/318.c9a8abde.chunk.js": "/React-Messenger/static/js/318.c9a8abde.chunk.js",
     "static/css/604.83657d38.chunk.css": "/React-Messenger/static/css/604.83657d38.chunk.css",
@@ -94,11 +94,11 @@
     "static/media/settingsIcon.svg": "/React-Messenger/static/media/settingsIcon.22b0774b856551c4d856ea83fa20463f.svg",
     "static/media/checkmark.svg": "/React-Messenger/static/media/checkmark.5d458d8e9d3a848de5d7562db61e3ea8.svg",
     "main.995c3cef.css.map": "/React-Messenger/static/css/main.995c3cef.css.map",
-    "main.a5455eee.js.map": "/React-Messenger/static/js/main.a5455eee.js.map",
+    "main.ecfd41f5.js.map": "/React-Messenger/static/js/main.ecfd41f5.js.map",
     "316.25274de8.chunk.css.map": "/React-Messenger/static/css/316.25274de8.chunk.css.map",
     "316.0607e65e.chunk.js.map": "/React-Messenger/static/js/316.0607e65e.chunk.js.map",
-    "65.44613f86.chunk.css.map": "/React-Messenger/static/css/65.44613f86.chunk.css.map",
-    "65.7a512a38.chunk.js.map": "/React-Messenger/static/js/65.7a512a38.chunk.js.map",
+    "65.83261a82.chunk.css.map": "/React-Messenger/static/css/65.83261a82.chunk.css.map",
+    "65.eff66e31.chunk.js.map": "/React-Messenger/static/js/65.eff66e31.chunk.js.map",
     "318.0f9fea83.chunk.css.map": "/React-Messenger/static/css/318.0f9fea83.chunk.css.map",
     "318.c9a8abde.chunk.js.map": "/React-Messenger/static/js/318.c9a8abde.chunk.js.map",
     "604.83657d38.chunk.css.map": "/React-Messenger/static/css/604.83657d38.chunk.css.map",
@@ -110,6 +110,6 @@
   },
   "entrypoints": [
     "static/css/main.995c3cef.css",
-    "static/js/main.a5455eee.js"
+    "static/js/main.ecfd41f5.js"
   ]
 }
