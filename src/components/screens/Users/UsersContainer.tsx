@@ -107,4 +107,4 @@ export default compose<React.ComponentType>(withRouter, withAuthRedirect, connec
     setCurrentPage: usersActions.setCurrentPage,
     follow,
     unfollow,
-}))(UsersContainer)
+}))(UsersContainer);

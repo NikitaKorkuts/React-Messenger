@@ -10,4 +10,4 @@ export const reversedMessagesWithConvertedDate = (response: MessagesResponseType
         })
         .reverse();
     return {...response, items: newMessages};
-}
+};

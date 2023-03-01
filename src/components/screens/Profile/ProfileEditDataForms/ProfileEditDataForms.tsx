@@ -65,14 +65,14 @@ export const ProfileEditDataForms: FC<ProfileEditDataFormsPropsType> = ({profile
                 validationSchema={yup.object().shape(validationSchemaFields)}
             >
                 {({
-                      values,
-                      handleChange,
-                      touched,
-                      errors,
-                      handleBlur,
-                      handleSubmit,
-                      status,
-                  }) => {
+                    values,
+                    handleChange,
+                    touched,
+                    errors,
+                    handleBlur,
+                    handleSubmit,
+                    status,
+                }) => {
 
                     return (
                         <div>
@@ -181,6 +181,7 @@ export const ProfileEditDataForms: FC<ProfileEditDataFormsPropsType> = ({profile
                                                 </div>
                                             );
                                         }
+                                        return {};
                                     })}
                                     {status?.error && (
                                         <div className={s.formRow}>

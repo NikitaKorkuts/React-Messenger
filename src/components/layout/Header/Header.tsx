@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Link, Navigate, NavLink} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 
 import {ReactComponent as SearchIcon} from '../../../assets/icons/search-icon.svg';
 import {ReactComponent as ChatIcon} from '../../../assets/icons/chatIcon.svg';
@@ -24,8 +24,6 @@ export const Header: FC<HeaderPropsType & RouterType> = ({
     const isProfileLinkActive = pathname === '/profile' || pathname === `/profile/${userId}`;
     const isSubscribeLinkActive = pathname + router.location.search === '/users?friend=true';
 
-
-
     return (
         <div className={s.header}>
             <div className={s.wrapper}>
@@ -41,7 +39,11 @@ export const Header: FC<HeaderPropsType & RouterType> = ({
                         className={({ isActive }) => (isActive ? s.active : '')}
                     >
                         <ChatIcon className={s.chatIcon} />
-                        {newMessagesCount !== 0 && <div className={s.newMessagesCountCircle}>{newMessagesCount}</div>}
+                        {newMessagesCount !== 0 && (
+                            <div className={s.newMessagesCount}>
+                                <p className={s.newMessagesCountText}>{newMessagesCount}</p>
+                            </div>
+                        )}
                     </NavLink>
 
                 </div>
@@ -90,8 +92,6 @@ export const Header: FC<HeaderPropsType & RouterType> = ({
                             to={`/profile/${userId}`}
                             className={s.profileLink}
                         >
-
-
                             <img
                                 className={s.avatar}
                                 src={authUserProfile.photos?.small || defaultAvatar}

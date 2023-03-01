@@ -23,6 +23,6 @@ export const authServices = {
     },
     getCaptchaUrl() {
         return instance.get<GetCaptchaUrlResponseType>('security/get-captcha-url')
-            .then(res => res.data)
+            .then(res => res.data);
     },
 };

@@ -20,8 +20,8 @@ export const getFormattedLastUserActivityDate = (date: Date) => {
     } else if (compareDates(date, yesterday)) {
         return `Был(a) вчера в ${time}`;
     } else if (!areYearSame) {
-        return `Был(a) ${getFormattedDateWithFullMonth(date)} в ${date.getFullYear()} г. `;
+        return `Был(a) ${getFormattedDateWithFullMonth(date)} г.`;
     } else {
         return `Был(a) ${getFormattedDateWithFullMonth(date)}`;
     }
-}
+};

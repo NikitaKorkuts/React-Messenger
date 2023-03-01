@@ -25,7 +25,7 @@ export const dialogsInitialState = {
     areMessagesFetching: false,
     isMessageSending: false,
     currentPage: 2,
-    pageCount: 20,
+    pageCount: 5,
     totalPagesCount: 0,
     newMessagesCount: 0,
     activeDialogId: null as null | number,

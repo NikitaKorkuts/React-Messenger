@@ -37,7 +37,7 @@ export const UserItem: FC<UserItemPropsType> = ({
             return (
                 <div className={s.follow}>
                     <button
-                        disabled={isFollowingInProgress.some(id => id === id)}
+                        disabled={isFollowingInProgress.some(userId => userId === id)}
                         onClick={onAddToFriends}
                         className={s.followBtn}
                     >
@@ -92,5 +92,5 @@ export const UserItem: FC<UserItemPropsType> = ({
                 </div>
             </div>
         </div>
-    )
+    );
 };

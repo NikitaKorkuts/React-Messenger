@@ -35,39 +35,39 @@ export const usersReducer = (state = usersInitialState, action: UsersActionsType
         return {
             ...state,
             users: updateObjectInArray(state.users, action.id, 'id', {followed: false}),
-        }
+        };
     case SET_USERS:
         return {
             ...state,
             users: action.users,
-        }
+        };
     case SET_CURRENT_PAGE:
         return {
             ...state,
             currentPage: action.page,
-        }
+        };
     case SET_TOTAL_USERS_COUNT:
         return {
             ...state,
             totalUsersCount: action.count,
-        }
+        };
     case TOGGLE_IS_FETCHING:
         return {
             ...state,
             isFetching: action.isFetching,
-        }
+        };
     case TOGGLE_IS_FOLLOWING_IN_PROGRESS:
         return {
             ...state,
             isFollowingInProgress: action.isFetching
                 ? [...state.isFollowingInProgress, action.userId]
                 : state.isFollowingInProgress.filter(id => id !== action.userId),
-        }
+        };
     case SET_FILTER:
         return {
             ...state,
             filter: action.filter,
-        }
+        };
     default:
         return state;
     };

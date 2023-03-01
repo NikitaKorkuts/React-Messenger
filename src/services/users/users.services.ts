@@ -9,4 +9,4 @@ export const usersServices = {
             .get<GetUsersResponseType>(`users?page=${page}&count=${pageSize}&term=${term}` + friendParam)
             .then(response => response.data);
     },
-}
+};

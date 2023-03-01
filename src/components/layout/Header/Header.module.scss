@@ -43,24 +43,42 @@
     a {
       position: relative;
 
-      .newMessagesCountCircle {
-        width: 15px;
+      .newMessagesCount {
         height: 15px;
-        font-size: 12px;
-        font-weight: 500;
+        width: 15px;
+        position: absolute;
+        bottom: -1px;
+        right: -1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: red;
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
         border-radius: 50%;
-        color: white;
-        background: red;
-        position: absolute;
-        text-align: center;
-        bottom: 0;
-        right: -3px;
+
+        .newMessagesCountText {
+          //width: 15px;
+          //height: 15px;
+          //font-size: 12px;
+          //font-weight: 500;
+          //-webkit-border-radius: 50%;
+          //-moz-border-radius: 50%;
+          //border-radius: 50%;
+          //color: white;
+          //background: red;
+          //position: absolute;
+          //text-align: center;
+          //bottom: 0;
+          //right: -3px;
+          font-size: 12px;
+          text-align: center;
+          font-weight: 500;
+          color: white;
+          margin: 0;
+        }
       }
     }
-
-
   }
 
   .login{
@@ -191,6 +209,19 @@
         height: 30px;
         margin-left: 7px;
         margin-right: 7px;
+      }
+
+      a {
+        .newMessagesCount {
+          width: 12px;
+          height: 12px;
+          bottom: 3px;
+          right: 3px;
+
+          .newMessagesCountText {
+            font-size: 9px;
+          }
+        }
       }
     }
   }

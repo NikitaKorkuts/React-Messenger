@@ -9,4 +9,4 @@ export const dialogsWithConvertedDate = (dialogs: DialogType[]) => {
             const lastUserActivityDate = convertInDate(d.lastUserActivityDate);
             return {...d, lastDialogActivityDate, lastUserActivityDate};
         });
-}
+};

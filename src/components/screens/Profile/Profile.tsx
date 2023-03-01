@@ -80,9 +80,7 @@ export class Profile extends Component<ProfilePropsType> {
             profile,
             status,
             updateUserAvatar,
-            profileUpdatingStatus,
             updateUserStatus,
-            setProfileUpdatingStatus,
         } = this.props;
 
 

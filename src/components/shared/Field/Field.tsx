@@ -1,12 +1,7 @@
 import React, {FC} from 'react';
 
 import s from './field.module.scss';
-
-export type FieldPropsType = {
-    children: React.ReactNode
-    hasError?: boolean | string
-    error?: string
-}
+import {FieldPropsType} from './field.types';
 
 export const Field: FC<FieldPropsType> = ({
     children,

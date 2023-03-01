@@ -14,8 +14,8 @@ export const getFormattedLastDialogActivityDate = (date: Date) => {
     } else if (nowDate.getDate() === date.getDate()-1 && areMonthsSame && areYearSame) {
         return `Вчера в ${time}`;
     } else if (!areYearSame) {
-        return `${date.getFullYear()} г. ${newDate}`;
+        return `${newDate} г.`;
     } else {
         return `${newDate} ${time}`;
     }
-}
+};

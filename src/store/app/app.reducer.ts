@@ -14,4 +14,4 @@ export const appReducer = (state = appInitialState, action: AppActionsType): App
     default:
         return state;
     }
-}
+};

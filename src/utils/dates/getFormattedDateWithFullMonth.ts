@@ -5,4 +5,4 @@ export const getFormattedDateWithFullMonth = (date: Date) => {
     const format2 = `${date.getDate()} ${month} ${date.getFullYear()}`;
 
     return currentYear === date.getFullYear() ? format1 : format2;
-}
+};

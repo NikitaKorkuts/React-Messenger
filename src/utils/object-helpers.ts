@@ -5,4 +5,4 @@ export const updateObjectInArray = (items: any, itemId: number, objPropName: str
         }
         return u;
     });
-}
+};

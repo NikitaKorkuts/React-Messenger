@@ -67,13 +67,13 @@ export const logout = (): BasicThunkActionType<AuthActionsType> => (dispatch) =>
         .then(response => {
             if (response.resultCode === ResultCodesEnum.Success) {
                 dispatch(authActions.setAuthUserData(null, null, null, false));
-                dispatch(authActions.setAuthUserProfile(null))
+                dispatch(authActions.setAuthUserProfile(null));
             }
         });
 };
 
 
 export const getCaptchaUrl = (): BasicThunkActionType<AuthActionsType> => async (dispatch) => {
-    const response = await authServices.getCaptchaUrl()
-    dispatch(authActions.setCaptchaUrl(response.url))
+    const response = await authServices.getCaptchaUrl();
+    dispatch(authActions.setCaptchaUrl(response.url));
 };

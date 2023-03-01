@@ -103,4 +103,4 @@ export default compose<React.ComponentType>(withRouter, withAuthRedirect, connec
     follow,
     unfollow,
     setIsFriend: profileActions.setIsFriend,
-}))(ProfileContainer)
+}))(ProfileContainer);

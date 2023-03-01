@@ -18,12 +18,29 @@ class HeaderContainer extends Component<HeaderContainerPropsType & RouterType> {
     });
     componentDidMount() {
         const {getNewMessagesCount, isAuth} = this.props;
-
-        if(isAuth) {
+        if (isAuth) {
+            clearInterval(this.newMessagesCountRequestTimer);
             this.newMessagesCountRequestTimer = setInterval(
                 () => {
+
                     getNewMessagesCount();
-                }, 2000,
+
+                }, 3000,
+            );
+        }
+    }
+
+    componentDidUpdate(prevProps: HeaderContainerPropsType & RouterType) {
+        const {getNewMessagesCount, isAuth} = this.props;
+
+        if (prevProps.isAuth !== isAuth) {
+            clearInterval(this.newMessagesCountRequestTimer);
+            this.newMessagesCountRequestTimer = setInterval(
+                () => {
+                    if (isAuth) {
+                        getNewMessagesCount();
+                    }
+                }, 3000,
             );
         }
     }
@@ -48,7 +65,7 @@ class HeaderContainer extends Component<HeaderContainerPropsType & RouterType> {
     };
 
     render() {
-        const {authUserProfile, isAuth, userId, logout, newMessagesCount, router, setFilter} = this.props;
+        const {authUserProfile, isAuth, userId, logout, newMessagesCount, router} = this.props;
 
         return (
             <Header
@@ -77,4 +94,4 @@ export default compose<React.ComponentType>(withRouter, connect(mapStateToProps,
     getNewMessagesCount,
     setFilter: usersActions.setFilter,
     requestUsers,
-}))(HeaderContainer)
+}))(HeaderContainer);

@@ -176,4 +176,4 @@ export default compose<React.ComponentType>(withRouter, withAuthRedirect, connec
     getActiveDialog,
     setActiveDialogId: dialogsActions.setActiveDialogId,
     deleteMessage,
-}))(DialogContainer)
+}))(DialogContainer);

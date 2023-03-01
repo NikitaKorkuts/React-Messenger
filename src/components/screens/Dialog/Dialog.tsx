@@ -6,11 +6,13 @@ import * as yup from 'yup';
 import {Textarea} from '../../ui/Textarea/Textarea';
 import {getFormattedLastUserActivityDate} from '../../../utils/dates/getFormattedLastUserActivityDate';
 import {MessageTypesEnum} from '../../../store/dialogs/dialogs.types';
+import {Preloader} from '../../shared/Preloader/Preloader';
 
 import {DialogPropsType} from './dialog.types';
 import {MessageItem} from './MessageItem';
 import s from './dialog.module.scss';
 import {SeparatingDateItem} from './SeparatingDateItem';
+
 
 export const Dialog: FC<DialogPropsType> = ({
     updatingMessages,
@@ -27,6 +29,7 @@ export const Dialog: FC<DialogPropsType> = ({
     activeDialog,
     deleteMessage,
 }) => {
+
     const MessagesElements = updatingMessages.map((m, i) => {
         const nextMessage = updatingMessages[i + 1] || notUpdatingMessages[0];
         const isSameSender = nextMessage?.senderId === m.senderId;
@@ -38,7 +41,6 @@ export const Dialog: FC<DialogPropsType> = ({
                         date={getFormattedDateWithFullMonth(m.addedAt)}
                     />
                 )}
-
                 <MessageItem
                     body={m.body}
                     senderName={m.senderName}
@@ -126,10 +128,12 @@ export const Dialog: FC<DialogPropsType> = ({
                 inverse={true}
                 className={s.infiniteScroll}
                 hasMore={currentPage !== totalPagesCount}
-                loader={<h4 className={s.loaderText}>Загрузка...</h4>}
+                // loader={<h4 className={s.loaderText}>Загрузка...</h4>}
+                loader={<Preloader />}
                 dataLength={notUpdatingMessages.length}
                 scrollableTarget="scrollableDiv"
             >
+
 
                 {notUpdatingMessages.map((m, i) => {
                     const nextMessage = notUpdatingMessages[i + 1];
